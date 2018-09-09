@@ -1,0 +1,137 @@
+{% extends _layout %} {% block content %}
+<header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{ asset('img/',true)}}header-mini3.jpg"
+  data-background-mobile="{{ asset('img/',true)}}header-mini3.jpg" class="ct-mediaSection">
+  <div class="ct-breadcrumbs">
+    <ul class="list-inline list-unstyled text-uppercase">
+      <li>
+        <a href="{{ base_url() }}">
+          <i class="fa fa-home"></i>
+        </a>
+        <a href="{{ base_url() }}tour/{{ parent_alias }}">
+          <i class="fa fa-angle-right"></i>{{ parent_name }}</li>
+        </a>
+        <i class="fa fa-angle-right"></i>{{ child_name }}</li>
+    </ul>
+  </div>
+</header>
+<section class="ct-u-paddingTop50 ct-u-paddingBottom70">
+  <div class="container">
+    <div class="col-md-12">
+      <div class="ct-results-panel">
+        <div class="ct-results-left">
+          <i class="fa fa-search"></i>
+          <span class="ct-results-counter"></span>
+        </div>
+        <div class="ct-results-right"></div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="ct-js-gallery ct-gallery ct-gallery--product">
+        {% for tour in tours %}
+        <div class="ct-gallery-item {{ tour.alias_category|replace({'_': " "}) }}">
+          <div class="ct-productBox ct-productBox--moreInfo ct-productBox--moreInfo-inline">
+            <h4 class="h4 ct-u-marginBottom10">{{tour.name}}</h4>
+            <div class="ct-productBox-Description">
+              <div class="ct-productBox-image">
+                <div class="ct-productBox-imageContainer">
+                  <a href="{{ base_url() }}tour/{{ parent_alias }}/{{ child_alias }}/{{ tour.alias }}">
+                    <img src="{{ asset('img/tours/',true)}}{{tour.thumbnail}}" alt="Product">
+                  </a>
+                </div>
+              </div>
+              <div class="ct-productBox-Meta text-center">
+                <div class="ct-productBox-deliveryInformation">
+                  <div class="ct-u-displayTableRow">
+                    <div class="ct-productBox-MetaItem">
+                      <span class="ct-u-colorMotive ct-fw-700 text-uppercase">Paket</span>
+                      <span class="h5 text-uppercase">{{ tour.name_category }}</span>
+                    </div>
+                  </div>
+                </div><div class="ct-productBox-deliveryInformation">
+                  <div class="ct-u-displayTableRow">
+                    <div class="ct-productBox-MetaItem">
+                      <span class="ct-u-colorMotive ct-fw-700 text-uppercase">Harga</span>
+                      <span class="h5 text-uppercase">HUBUNGI KAMI</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="ct-u-marginTop10">{{ tour.description_summary }}</p>
+                <a href="{{ base_url() }}tour/{{ parent_alias }}/{{ child_alias }}/{{ tour.alias }}" class="btn btn-primary btn-sm text-uppercase ct-u-marginTop20 col-md-12"><i class="fa fa-search-plus"></i><span> Lihat Detil</span></a>
+                <a target="_blank" href="https://api.whatsapp.com/send?phone={{ getSettingValue('company_whatsapp').value }}" class="btn btn-success btn-sm text-uppercase ct-u-marginTop10 col-md-12"><i class="fa fa-whatsapp"></i><span> Pesan</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="ct-sidebar ct-sidebar--search">
+        <div class="widget widget-filter ct-js-gallery-filters" data-group="continent">
+          <div class="widget-inner">
+            <h6 class="ct-fw-600 ct-u-marginBottom20 text-capitalize">BUTUH BANTUAN ?</h6>
+            <img src="{{ asset('img/',true)}}call-center.jpg" alt="Product">
+            <a target="_blank" href="https://api.whatsapp.com/send?phone={{ getSettingValue('company_whatsapp').value }}" class="btn btn-success btn-sm text-uppercase ct-u-marginTop20">
+              <i class="fa fa-whatsapp"></i>
+              <span>Via Whatsapp</span></a>
+            <a href="tel:{{ getSettingValue('company_phone').value }}" class="btn btn-primary btn-sm text-uppercase ct-u-marginTop20">
+              <i class="fa fa-phone"></i>
+              <span>Via Telepon</span></a>
+    
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="ct-u-backgroundMotive ct-u-colorWhite ct-u-paddingBoth20">
+  <div class="container ct-u-relative ct-u-paddingTop20">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 col-lg-offset-0 col-lg-7 ct-u-z-index4">
+        <h4 class="text-uppercase">BERLANGGANAN</h4>
+        <div class="ct-divider--doubleBorder ct-u-marginBoth20"></div>
+        <p class="ct-u-marginBottom20">Daftarkan email anda untuk menerima berita & penawaran terbaru dari kami:</p>
+        <div role="alert" class="successMessage alert alert-success alert-dismissible">
+          <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+            <span aria-hidden="true">�</span>
+          </button>
+          <strong>Success!</strong>Congratulation, mission success
+        </div>
+        <div role="alert" class="errorMessage alert alert-danger alert-dismissible">
+          <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+            <span aria-hidden="true">�</span>
+          </button>
+          <strong>Danger!</strong>You did something wrong
+        </div>
+        <form action="./assets/form/send.php" method="POST" class="validateIt ct-u-marginBottom30">
+          <div class="input-group input--withIcon">
+            <span class="input-icon">
+              <i class="fa fa-envelope"></i>
+            </span>
+            <input type="email" required="" name="field[]" class="form-control input-lg">
+            <span class="input-group-btn">
+              <button class="btn btn-default btn-transparent text-uppercase">Subscribe</button>
+            </span>
+          </div>
+        </form>
+        <ul class="list-unstyled ct-list--circleWithIcons ct-u-marginBottom60">
+          <li>
+            <span class="ct-list-iconContainer">
+              <i class="fa fa-usd"></i>
+            </span>Voucher potongan harga dari kami.</li>
+          <li>
+            <span class="ct-list-iconContainer">
+              <i class="fa fa-gift"></i>
+            </span>Paket trip terbaru dari kami.</li>
+          <li>
+            <span class="ct-list-iconContainer">
+              <i class="fa fa-unlock-alt"></i>
+            </span>Informasi destinasi wisata yang kekinian.</li>
+        </ul>
+      </div>
+    </div>
+    <img src="./assets/images/content/guide-tour/subscribe-image.png" data-bottom="0" data-right="-210" alt="sub image" class="ct-js-imageOffset ct-u-z-index3">
+  </div>
+</section>
+
+{% endblock %}

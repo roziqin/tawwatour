@@ -1,0 +1,94 @@
+{% extends _layout %} 
+{% block content %}
+<header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{ asset('img/',true)}}header-mini2.jpg"
+    data-background-mobile="{{ asset('img/',true)}}header-mini2.jpg" class="ct-mediaSection">
+    <div class="ct-breadcrumbs">
+        <ul class="list-inline list-unstyled text-uppercase">
+            <li>
+                <a href="index.html">
+                    <i class="fa fa-home"></i>
+                </a>
+                <i class="fa fa-angle-right"></i>Frequently Asked Questions</li>
+        </ul>
+    </div>
+</header>
+<section class="ct-u-paddingBoth100">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-sm-9">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h4 class="ct-u-paddingBoth10 text-uppercase ct-fw-700 ct-u-colorMotive ct-u-marginBottom30">PUSAT BANTUAN</h4>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group form-group--search">
+                            <input id="search2" required type="text" name="field[]" class="form-control input--rounded">
+                            <button>
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ct-squareThumbnail">
+                    <div class="ct-squareThumbnail-body">
+                        <div class="ct-squareThumbnail-title">
+                            <span class="ct-fw-700 text-uppercase">PERTANYAAN UMUM</span>
+                            <i class="fa fa-lock"></i>
+                        </div>
+                        <div class="ct-squareThumbnail-content">
+                            <div id="accordion2" role="tablist" aria-multiselectable="true" class="panel-group ct-accordion--dark">
+                                <div class="panel panel-default">
+                                    {% for faq in faqs %}
+                                    <div id="headingOne{{ loop.index }}" role="tab" class="panel-heading">
+                                        <h6 class="ct-fw-400">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion{{ loop.index }}" href="#collapseOne{{ loop.index }}"
+                                                aria-expanded="true" aria-controls="collapseOne{{ loop.index }}">{{ loop.index }}. {{ faq.question }}</a>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseOne{{ loop.index }}" role="tabpanel" aria-labelledby="headingOne{{ loop.index }}" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <p>{{ faq.answer }}</p>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="widget widget-filter ct-js-gallery-filters" data-group="continent">
+                    <div class="widget-inner">
+                        <h6 class="ct-fw-600 ct-u-marginBottom20 text-capitalize">BUTUH BANTUAN ?</h6>
+                        <img src="{{ asset('img/',true)}}call-center.jpg" alt="Product">
+                        <a href="https://api.whatsapp.com/send?phone={{ getSettingValue('company_whatsapp').value }}" class="btn btn-success btn-sm text-uppercase ct-u-marginTop20">
+                            <i class="fa fa-whatsapp"></i>
+                            <span>Via Whatsapp</span>
+                        </a>
+                        <a href="tel:{{ getSettingValue('company_phone').value }}" class="btn btn-primary btn-sm text-uppercase ct-u-marginTop20">
+                            <i class="fa fa-phone"></i>
+                            <span>Via Telepon</span>
+                        </a>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ct-divider--greyBig ct-u-marginBoth40"></div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="ct-u-displayTableVertical ct-u-displayTableMobile text-left">
+                    <div class="ct-u-displayTableCell">
+                        <h4>Tidak dapat menemukan yang Anda cari?</h4>
+                    </div>
+                    <div class="ct-u-displayTableCell">
+                        <a href="{{ base_url() }}contact" class="btn btn-primary btn-lg text-uppercase">HUBUNGI KAMI</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

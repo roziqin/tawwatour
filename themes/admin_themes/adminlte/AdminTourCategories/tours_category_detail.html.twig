@@ -1,0 +1,41 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Category
+        <small>detail</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Category</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <div class="row">
+    <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ category ? category.name : 'Unknown' }}</h3>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Name</th>
+                            <td>{{ category.name }}</td>
+                        </tr>                   
+                    </table>
+                </div>
+                <div class="box-footer">
+                    <a href="{{ generate_url('admin_tours_categories_index') }}" class="btn btn-warning"><i class="fa fa-chevron-left"></i> Back</a> 
+                    <a href="{{ generate_url('admin_tours_categories_form') }}?mode=edit&id={{category.id}}" class="btn btn-info" style="margin-left:5px;">Edit</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6"></div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+    </script>
+{% endblock %}

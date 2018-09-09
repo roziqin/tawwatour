@@ -1,0 +1,38 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Gallery Category
+        <small>form</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Gallery Category</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message is defined and message is not empty ? message : '' }}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="gallery_category_name">Name</label>
+                            <input type="text" class="form-control alphanumeric" id="gallery_category_name" name="gallery_category_name" placeholder="Enter Gallery Category Name" value="{{ category is defined ? category.name : '' }}">
+                        </div>                       
+                    </div>
+                    <div class="box-footer">
+                        <a href="{{ generate_url('admin_gallery_categories') }}" class="btn btn-warning"><i class="fa fa-chevron-left"></i> Back</a>
+                        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+    </script>
+{% endblock %}

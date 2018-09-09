@@ -1,0 +1,83 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Staff
+        <small>list of all quote</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Staff</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message }}
+    <div class="box">
+        <div class="box-header">
+            <a href="{{ generate_url('admin_staff_form') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> New Staff</a>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hovered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Description</th>
+                            <th>Show Staff</th>
+                            <th>Image</th>
+                            <th>Sosmed</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for staff in staffs %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ staff.name }}</td>
+                                <td>{{ staff.position }}</td>
+                                <td>{{ description[loop.index -1] }}</td>
+                                <td><span class="label label-{{ staff.top == 1 ? 'success' : 'danger' }}">{{ staff.top == 1 ? 'Active' : 'Non-Active' }}</span></td>
+                                <td>
+                                    <center>
+                                        {% if staffs and staff.img is not empty %}
+                                            <img src="{{ asset('images/staffs/' ~ staff.img ,true) }}" style="width:50px">
+                                        {% else %}
+                                            <img src="{{ asset('images/staffs/default.png',true) }}" style="width:50px">
+                                        {% endif %}
+                                    </center>
+                                </td>
+                                <td class="text-center">
+                                        <div class="col-md-3">
+                                            <a href="{{socmed[loop.index-1].ig}}" target="blank"><i class="fa  fa-instagram "></i></a>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <a href="{{socmed[loop.index-1].fb}}" target="blank"><i class="fa  fa-facebook "></i></a>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <a href="{{socmed[loop.index-1].tw}}" target="blank"><i class="fa  fa-twitter "></i></a>
+                                        </div>
+                                    
+                                </td>
+                                <td>
+                                    <a href="{{ generate_url('admin_staff_detail',{id:staff.id}) }}" class="btn btn-sm btn-success">detail</a> 
+                                    <a href="{{ generate_url('admin_staff_form') }}?mode=edit&id={{staff.id}}" class="btn btn-sm btn-warning" style="margin-left:5px;">edit</a> 
+                                    <a href="{{ generate_url('admin_staff_delete',{id:staff.id}) }}" class="btn btn-sm btn-danger btn-confirm" style="margin-left:5px;">delete</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7"><div class="alert alert-danger">No Data</div></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+    </script>
+{% endblock %}

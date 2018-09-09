@@ -1,0 +1,65 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Quote
+        <small>list of all quote</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Quote</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message }}
+    <div class="box">
+        <div class="box-header">
+            <a href="{{ generate_url('admin_quotes_form') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> New Quote</a>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hovered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            {# <th>Image</th> #}
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for quote in quotes %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ quote.name }}</td>
+                                <td>{{ description[loop.index -1] }}</td>
+                                {# <td>
+                                    <center>
+                                        {% if quotes and quote.img is not empty %}
+                                            <img src="{{ asset('img/quotes/' ~ quote.img ,true) }}" style="width:50px">
+                                        {% else %}
+                                            <img src="{{ asset('img/quotes/default.png',true) }}" style="width:50px">
+                                        {% endif %}
+                                    </center> #}
+                                <td>
+                                    <a href="{{ generate_url('admin_quotes_detail',{id:quote.id}) }}" class="btn btn-sm btn-success">detail</a> 
+                                    <a href="{{ generate_url('admin_quotes_form') }}?mode=edit&id={{quote.id}}" class="btn btn-sm btn-warning" style="margin-left:5px;">edit</a> 
+                                    <a href="{{ generate_url('admin_quotes_delete',{id:quote.id}) }}" class="btn btn-sm btn-danger btn-confirm" style="margin-left:5px;">delete</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5"><div class="alert alert-danger">No Data</div></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+    </script>
+{% endblock %}

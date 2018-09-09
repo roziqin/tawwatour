@@ -1,0 +1,60 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Sliders
+        <small>detail</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Sliders</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    <div class="row">
+    <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{ sliders ? sliders.title : 'Unknown' }}</h3>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered">                            
+                        <tr>
+                            <td colspan="2">
+                                <center>
+                                {% if sliders and sliders.img is not empty %}
+                                    <img src="{{ asset('img/slides/' ~ sliders.img ,true) }}" style="width:200px">
+                                {% else %}
+                                    <img src="{{ asset('imag/slides/default.png',true) }}" style="width:200px">
+                                {% endif %}
+                                </center>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Title</th>
+                            <td>{{ sliders.title }}</td>
+                        </tr>     
+                        <tr>
+                            <th>Subtitle</th>
+                            <td>{{ sliders.subtitle }}</td>
+                        </tr>  
+                        <tr>
+                            <th>Description</th>
+                            <td>{{ sliders.description }}</td>
+                        </tr>            
+                    </table>
+                </div>
+                <div class="box-footer">
+                    <a href="{{ generate_url('admin_sliders') }}" class="btn btn-warning"><i class="fa fa-chevron-left"></i> Back</a> 
+                    <a href="{{ generate_url('admin_sliders_form') }}?mode=edit&id={{sliders.id}}" class="btn btn-info" style="margin-left:5px;">Edit</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6"></div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+    </script>
+{% endblock %}

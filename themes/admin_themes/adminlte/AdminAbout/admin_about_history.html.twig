@@ -1,0 +1,45 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        About Us
+        <small>form</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">About Us</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message is defined and message is not empty ? message : '' }}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form method="post">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="about_title">Title</label>
+                            <input type="text" class="form-control" id="about_title" name="about_title" placeholder="Enter Title" value="{{ history is defined ? history[0].title : '' }}"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="about_description">Description</label>
+                            <textarea type="text" class="form-control textarea" id="about_description" name="about_description" placeholder="Enter About Description">{{ history is defined ? history[0].description : '' }}</textarea>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+        $(function () {
+            //bootstrap WYSIHTML5 - text editor
+            $('.textarea').wysihtml5();
+        })
+    </script>
+{% endblock %}

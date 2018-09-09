@@ -1,0 +1,104 @@
+<div class="ct-navbarMobile">
+	<a href="{{ base_url() }}" class="navbar-brand">
+		<img src="{{ asset('img/', true) }}{{ getSettingValue('company_logo').value }}" alt="Mobile Logo">
+	</a>
+	<button type="button" class="navbar-toggle">
+		<span class="sr-only">Toggle Navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	</button>
+</div>
+<div class="ct-topBar text-uppercase ct-fw-400">
+	<div class="container">
+		<ul class="list-inline pull-left ct-information-contact">
+			<li>
+				<i class="fa fa-envelope-o"></i>Email:
+				<a href="mailto:{{ getSettingValue('company_email').value }}"> {{ getSettingValue('company_email').value }}</a>
+			</li>
+			<li>
+				<i class="fa fa-phone"></i>Telepon:
+				<a href="tel:(012)345-6789"> {{ getSettingValue('company_phone').value }}</a>
+			</li>
+			<!--<li>
+				<i class="fa fa-phone"></i>Alamat:
+				<a href="tel:(012)345-6789"> {{ getSettingValue('company_address').value }}</a>
+			</li>-->
+		</ul>
+		<div class="pull-right">
+			<ul class="list-inline">
+				<li>
+					<ul class="list-inline ct-socials">
+						<li>
+							<a href="{{ getSettingValue('company_url_fb').value }}">
+								<i class="fa fa-facebook"></i>
+							</a>
+						</li>
+						<li>
+							<a href="{{ getSettingValue('company_url_twitter').value }}">
+								<i class="fa fa-twitter"></i>
+							</a>
+						</li>
+						<li>
+							<a href="{{ getSettingValue('company_url_ig').value }}">
+								<i class="fa fa-instagram"></i>
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<a href="{{ base_url() }}contact" class="btn btn-default btn-xs">Kontak Kami</a>
+		</div>
+	</div>
+</div>
+<nav class="navbar yamm text-uppercase">
+	<div class="container">
+		<div class="navbar-header">
+			<a href="{{ base_url() }}">
+				<img src="{{ asset('img/', true) }}{{ getSettingValue('company_logo').value }}" alt="logo">
+			</a>
+		</div>
+		<ul class="nav navbar-nav ct-navbar--fadeInUp pull-right">
+			<li class="dropdown">
+				<a href="{{ base_url() }}">Home</a>
+			</li>
+			<li class="dropdown yamm-fw">
+				<a href="{{ base_url() }}about">Tentang Kami</a>
+			</li>
+			<li class="dropdown">
+				<a href="{{ base_url() }}tour/family_trip">Family Trip</a>
+				<ul class="dropdown-menu">
+					<li>
+						<div class="yamm-content">
+							{% for category in categories %}
+								{% if category.id_category == 1 %}
+									<a href="{{ base_url() }}tour/family_trip/{{ category.alias }}">{{category.name}}</a>
+								{% endif %}
+							{% endfor %}
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="{{ base_url() }}tour/corporate_trip">Corporate Trip</a>
+				<ul class="dropdown-menu">
+					<li>
+						<div class="yamm-content">
+							{% for category in categories %} 
+								{% if category.id_category == 2 %}
+									<a href="{{ base_url() }}tour/corporate_trip/{{ category.alias }}">{{category.name}}</a>
+								{% endif %} 
+							{% endfor %}
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="dropdown yamm-fw">
+				<a href="{{ base_url() }}blogs">Blog</a>
+			</li>
+			<li class="dropdown yamm-fw">
+				<a href="{{ base_url() }}faq">Bantuan</a>
+			</li>
+		</ul>
+	</div>
+</nav>

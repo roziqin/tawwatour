@@ -1,0 +1,193 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        tours
+        <small>form</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Tours</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message is defined and message is not empty ? message : '' }}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="tours_caption">Name <span class="text-red">*</span></label>
+                            <input type="text" class="form-control alphanumeric" id="tours_name" name="tours_name" placeholder="Enter tours Caption" value="{{ tourss is defined ? tourss.name : '' }}" required >
+                            <span class="help-block" style="color:red">*Name is required</span>
+                        </div>
+                        <div class="form-description">
+                            <label for="tours_category">Category</label>
+                            <select class="form-control" id="tours_category" name="tours_category" placeholder="Enter Category" required>
+                                <option value="0" readonly>Choose Category</option>
+                                {% for category in categories %}
+                                    <option {% if tourss.id_tour_category == category.id %} selected {% endif %} value="{{ category.id }}">{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div> 
+                        <div class="form-description">
+                            <label for="tours_name">Description Summary</label>
+                            <textarea type="text" class="form-control alphanumeric" id="tours_description_summary" name="tours_description_summary" placeholder="Enter tours Description">{{ tourss is defined ? tourss.description_summary : '' }}</textarea>
+                        </div>
+                        <div class="form-description">
+                            <label for="tours_name">Description</label>
+                            <textarea type="text" class="form-control textarea" id="tours_description" name="tours_description" placeholder="Enter tours Description">{{ tourss is defined ? tourss.description : '' }}</textarea>
+                        </div>
+                        <div class="form-description">
+                            <label for="tours_name">Itinerary</label>
+                            <textarea type="text" class="form-control textarea" id="tours_itinerary" name="tours_itinerary" placeholder="Enter tours Itinerary">{{ tourss is defined ? tourss.itinerary : '' }}</textarea>
+                        </div>
+                        <div class="form-description">
+                            <label for="tours_name">Fasilitas</label>
+                            <textarea type="text" class="form-control textarea" id="tours_facility" name="tours_facility" placeholder="Enter tours Facility">{{ tourss is defined ? tourss.facility : '' }}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tours_featured">Featured
+                                <span class="text-red">*</span>
+                            </label>
+                            <br>
+                            <input type="checkbox" class="form-group" id="tours_featured" name="tours_featured" value="1" {{ tourss is defined and
+                                tourss.featured==1 ? 'checked' : '' }}>
+                            <span class="help-block" style="color:red">*maksimal 4 tours aktif sebagai featured</span>
+                        </div>
+
+                        {% set img_gallery_temp = explode(',',tourss.img) %} 
+                        {% if tourss.img is not empty %}
+                        <div class="form-group">
+                            <label for="gallery_category">Banner</label>
+                            <div class="col-md-12">
+                                {% for img_gallery in img_gallery_temp %}
+                                <div class="col-md-4">
+                                    <img src="{{ asset('img/tours/' ~ img_gallery ,true) }}" style="width:120px">
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="{{ generate_url('admin_tours_image_delete',{id:tourss.id,img_name:img_gallery}) }}" class="btn btn-sm btn-flat btn-danger btn-confirm"
+                                        style="margin-left:5px;">HAPUS</a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="form-group">
+                            <label for="gallery_image">Banner Upload</label>
+                            <div class="input_fields_wrap_image">
+                                <div class="newinput_image">
+                                    <div class="col-md-6">
+                                        <input type="file" id="tours_image" name="tours_image[]">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button id="add_field_button_image" class="btn btn-primary pull-right">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <p class="help-block">Type: jpg/png | Max Size: 1Mb | Recommended Dimension: 1920 x 893 pixel</p>
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                         {% set img_thumbnail_temp = explode(',',tourss.thumbnail) %} {% if tourss.thumbnail is not empty %}
+                        <div class="form-group">
+                            <label for="thumbnail_category">Thumbnail</label>
+                            <div class="col-md-12">
+                                {% for img_thumbnail in img_thumbnail_temp %}
+                                <div class="col-md-4">
+                                    <img src="{{ asset('img/tours/' ~ img_thumbnail ,true) }}" style="width:120px">
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="{{ generate_url('admin_tours_thumbnail_delete',{id:tourss.id,img_name:img_thumbnail}) }}" class="btn btn-sm btn-flat btn-danger btn-confirm"
+                                        style="margin-left:5px;">HAPUS</a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="form-group">
+                            <label for="gallery_image">Thumbnail Upload</label>
+                            <div class="input_fields_wrap_thumbnail">
+                                <div class="newinput_thumbnail">
+                                    <div class="col-md-6">
+                                        <input type="file" id="tours_thumbnail" name="tours_thumbnail[]">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button id="add_field_button_thumbnail" class="btn btn-primary pull-right">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <p class="help-block">Type: jpg/png | Max Size: 1Mb | Recommended Dimension: 260 x 260 pixel</p>
+                            </div>
+                        </div>
+
+                        <!--<div class="form-group">
+                            <label for="tours_image">Image</label>
+                            <input type="file" id="tours_image" name="tours_image">
+                            <p class="help-block">Type: jpg/png | Max Size: 300kb | Recommended Dimension: 533x533 pixel</p>
+                        </div>-->            
+                    </div>
+                    <div class="box-footer">
+                        <a href="{{ generate_url('admin_tours') }}" class="btn btn-warning"><i class="fa fa-chevron-left"></i> Back</a>
+                        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+        $(function () {
+            //bootstrap WYSIHTML5 - text editor
+            $('.textarea').wysihtml5();
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_flat-blue',
+                radioClass: 'iradio_flat'
+            });
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            var wrapper = $(".input_fields_wrap_image"); //Fields wrapper
+            var add_button = $("#add_field_button_image"); //Add button ID
+            var wrapper_thumbnail = $(".input_fields_wrap_thumbnail"); //Fields wrapper
+            var add_button_thumbnail = $("#add_field_button_thumbnail"); //Add button ID
+
+
+            var x = 0; //initlal text box count
+            $(add_button).click(function (e) { //on add input button click
+                e.preventDefault();
+                x++; //text box increment
+
+                $(wrapper).append('<div class="newinput_image' + x + '"><div class="col-md-6"><input type="file" id="tours_image" name="tours_image[]"></div><div class="col-md-1"><button id="remove_field_image" class="btn btn-danger pull-right"><i class="fa fa-trash"></i></button></div></div>'); //add input box
+            });
+
+            var y = 0;
+            $(add_button_thumbnail).click(function (e) { //on add input button click
+                e.preventDefault();
+                y++; //text box increment
+
+                $(wrapper_thumbnail).append('<div class="newinput_thumbnail' + y + '"><div class="col-md-6"><input type="file" id="tours_thumbnail" name="tours_thumbnail[]"></div><div class="col-md-1"><button id="remove_field_thumbnail" class="btn btn-danger pull-right"><i class="fa fa-trash"></i></button></div></div>'); //add input box
+            });
+
+            $(wrapper).on("click", "#remove_field_image", function (e) { //user click on remove text
+                e.preventDefault(); $(".newinput_image" + x).remove(); x--;
+            })
+
+            $(wrapper).on("click", "#remove_field_thumbnail", function (e) { //user click on remove text
+                e.preventDefault(); $(".newinput_thumbnail" + x).remove(); x--;
+            })
+        });
+    </script>
+{% endblock %}

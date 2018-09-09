@@ -1,0 +1,53 @@
+<nav class="ct-menuMobile text-uppercase">
+    <ul class="ct-menuMobile-navbar">
+        <li class="dropdown">
+            <a href="{{ base_url() }}">home</a>
+        </li><li>
+            <a href="{{ base_url() }}about">Tentang Kami</a>
+        </li>
+        <li class="dropdown">
+            <a href="{{ base_url() }}tour/family_trip">Family Trip</a>
+            <ul class="dropdown-menu">
+                {% for category in categories %} {% if category.id_category == 1 %}
+                <li>
+                    <a href="{{ base_url() }}tour/family_trip/{{ category.alias }}">{{category.name}}</a>
+                </li>
+                {% endif %} {% endfor %}
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="{{ base_url() }}tour/corporate_trip">Corporate Trip</a>
+            <ul class="dropdown-menu">
+                {% for category in categories %} {% if category.id_category == 2 %}
+                <li>
+                    <a href="{{ base_url() }}tour/corporate_trip/{{ category.alias }}">{{category.name}}</a>
+                </li>
+                {% endif %} {% endfor %}
+            </ul>
+        </li>
+        <li>
+            <a href="{{ base_url() }}blogs">Blog</a>
+        </li>
+        <li>
+            <a href="{{ base_url() }}faq">Bantuan</a>
+        </li>
+        <li>
+            <a href="{{ base_url() }}contact">Hubungi Kami</a>
+        </li>
+    </ul>
+</nav>
+<!-- <div class="ct-reserveTicket">
+    <div class="ct-reserveTicket-body">
+        <div class="ct-reserveTicket-icon">
+            <div class="ct-reserveTicket-iconBackground">
+                <i class="fa fa-ticket"></i>
+            </div>
+        </div>
+        <div class="ct-reserveTicket-text">
+            <a href="itinerary.html">
+                <span class="ct-reserveTicket-title text-uppercase">Reserve your tickets</span>
+                <span class="text-capitalize">Plan your visit</span>
+            </a>
+        </div>
+    </div>
+</div> -->

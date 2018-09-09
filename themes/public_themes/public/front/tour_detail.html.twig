@@ -1,0 +1,128 @@
+{% extends _layout %}
+{% block content %}
+<header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{ asset('img/',true)}}header-mini3.jpg"
+  data-background-mobile="{{ asset('img/',true)}}header-mini3.jpg" class="ct-mediaSection">
+  <div class="ct-breadcrumbs">
+    <ul class="list-inline list-unstyled text-uppercase">
+      <li>
+        <a href="{{ base_url() }}">
+          <i class="fa fa-home"></i>
+        </a>
+        <a href="{{ base_url() }}tour/{{ parent_alias }}">
+          <i class="fa fa-angle-right"></i>{{ parent_name }}
+        </a>&nbsp;&nbsp;
+        <a href="{{ base_url() }}tour/{{ parent_alias }}/{{ child_alias }}">
+          <i class="fa fa-angle-right"></i>{{ child_name }}
+        </a>&nbsp;&nbsp;
+        <a>
+          <i class="fa fa-angle-right"></i>{{ tour.name }}</li>
+        </a>
+    </ul>
+  </div>
+</header>
+<section class="ct-u-paddingTop50 ct-u-paddingBottom70">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+        <div class="row">
+          <div class="col-md-12">
+            <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="6000"
+              data-draggable="true" data-touchMove="false" data-arrows="true" data-items="1" class="ct-slick ct-js-slick ct-slick--arrows ct-u-marginBottom20">
+              {% set img_slide_temp = explode(',',tour.img) %} 
+              {% if tour.img is not empty %} 
+                {% for img_slide in img_slide_temp %}
+                <div class="item">
+                  <img src="{{ asset('img/tours/',true)}}{{img_slide}}" alt="">
+                </div>
+                {% endfor %} 
+              {% else %}
+                <div class="item"></div>
+                  <img src="{{ asset('img/tours/default.png',true) }}"> 
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="row ct-u-colorBlackLight">
+          <div class="col-md-12">
+            <h4>{{tour.name}}
+              <a target="_blank" href="https://api.whatsapp.com/send?phone={{ getSettingValue('company_whatsapp').value }}" class="btn btn-primary text-uppercase btn-xs pull-right">BOOKING</a>
+            </h4>
+          </div>
+        </div>
+        <div class="ct-divider--greyBig ct-u-marginBoth20"></div>
+        <div class="row ct-u-colorBlackLight">
+          <div class="col-md-7">
+            <div class="ct-deliveryBox text-center">
+              <div class="ct-productBox-deliveryInformation">
+                <div class="ct-u-displayTableRow">
+                  <div class="ct-productBox-MetaItem">
+                    <span class="ct-u-colorMotive ct-fw-700 text-uppercase">TRIP</span>
+                    <span class="h5 text-uppercase ct-days">{{ parent_name }}</span>
+                  </div>
+                  <div class="ct-productBox-MetaItem">
+                    <span class="ct-u-colorMotive ct-fw-700 text-uppercase">PAKET</span>
+                    <span class="h5 text-uppercase">{{ child_name }}</span>
+                  </div>
+                  <div class="ct-productBox-MetaItem">
+                    <div class="ct-productBox-price">
+                      <span class="ct-u-colorMotive ct-fw-700 text-uppercase">HARGA</span>
+                      <span class="ct-currency">HUBUNGI KAMI</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ct-divider--greyBig ct-u-marginBoth20"></div>
+        <p class="ct-u-marginBottom30 ct-u-colorBlackLight">{{tour.description_summary}}</p>
+        <a href="#" data-class="ringkasan" class="btn btn-primary text-uppercase btn-xs btn-navigasi">Ringkasan Tour</a>&nbsp;
+        <a href="#" data-class="itinerary" class="btn btn-primary text-uppercase btn-xs btn-navigasi">Itinerary</a>&nbsp;
+        <a href="#" data-class="fasilitas" class="btn btn-primary text-uppercase btn-xs btn-navigasi">Fasilitas</a>&nbsp;
+        <div class="ct-divider--greyBig ct-u-marginBoth30"></div>
+        
+        <div class="ringkasan tab-content">
+          <h4 class="ct-u-marginBottom20">Ringkasan Tour</h4>
+          <div class="ct-divider--greyBig ct-u-marginBoth20"></div>
+          <p class="ct-u-marginBottom30 ct-u-colorBlackLight">{{tour.description}}</p>
+        </div>
+        
+        <div class="itinerary tab-content" style="display:none">
+          <h4 class="ct-u-marginBottom20">Itinerary</h4>
+          <div class="ct-divider--greyBig ct-u-marginBoth20"></div>
+          <p class="ct-u-marginBottom30 ct-u-colorBlackLight">{{tour.itinerary}}</p>
+        </div>
+        
+        <div class="fasilitas tab-content" style="display:none">
+          <h4 class="ct-u-marginBottom20">Fasilitas</h4>
+          <div class="ct-divider--greyBig ct-u-marginBoth20"></div>
+          <p class="ct-u-marginBottom30 ct-u-colorBlackLight">{{tour.facility}}</p>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="ct-sidebar ct-sidebar--search">
+          <div class="widget widget-filter ct-js-gallery-filters" style="padding-top:0px !important;" data-group="continent">
+            <div class="widget-inner">
+              <h6 class="ct-fw-600 ct-u-marginBottom20 text-capitalize">BUTUH BANTUAN ?</h6>
+              <img src="{{ asset('img/',true)}}call-center.jpg" alt="Product">
+              <a target="_blank" href="https://api.whatsapp.com/send?phone={{ getSettingValue('company_whatsapp').value }}" class="btn btn-success btn-sm text-uppercase ct-u-marginTop20">
+                <i class="fa fa-whatsapp"></i>
+                <span>Via Whatsapp</span>
+              </a>
+              <a href="tel:{{ getSettingValue('company_phone').value }}" class="btn btn-primary btn-sm text-uppercase ct-u-marginTop20">
+                <i class="fa fa-phone"></i>
+                <span>Via Telepon</span>
+              </a>
+        
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+
+{% endblock %}

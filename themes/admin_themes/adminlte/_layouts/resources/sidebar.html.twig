@@ -1,0 +1,99 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu">
+            <li class="header">MENU</li>
+            <!-- Optionally, you can add icons to the links -->
+            <li class="{{ GLOBAL.cname == 'AdminDashboard' ? 'active':'' }}"><a href="{{ generate_url('admin_dashboard') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+
+            {% if 'sliders-admin' in GLOBAL.userAccess or 'quotes-admin' in GLOBAL.userAccess or 'price-admin' in GLOBAL.userAccess or 'staff-admin' in GLOBAL.userAccess or 'testimonies-admin' in GLOBAL.userAccess %}
+                <li class="treeview {{ GLOBAL.cname in ['AdminSliders','AdminQuotes','AdminTestimonies'] ? 'active':'' }}">
+                    <a href="#"><i class="fa fa-globe"></i> <span>Home Page</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        {% if 'sliders-admin' in GLOBAL.userAccess %}
+                            <li class="{{ GLOBAL.cname == 'AdminSliders' ? 'active':'' }}"><a href="{{ generate_url('admin_sliders') }}"><i class="fa fa-picture-o"></i> <span>Sliders</span></a></li>
+                        {% endif %}
+                        {% if 'quotes-admin' in GLOBAL.userAccess %}
+                            <li class="{{ GLOBAL.cname == 'AdminQuotes' ? 'active':'' }}"><a href="{{ generate_url('admin_quotes_index') }}"><i class="fa fa-commenting-o"></i> <span>Quotes</span></a></li>
+                        {% endif %}
+                        {% if 'testimonies-admin' in GLOBAL.userAccess %}
+                            <li class="{{ GLOBAL.cname == 'AdminTestimonies' ? 'active':'' }}"><a href="{{ generate_url('admin_testimonies_index') }}"><i class="fa fa-edit"></i> <span>Testimonies</span></a></li>                   
+                        {% endif %}
+                    </ul>
+                </li>                
+            {% endif %}
+
+            {% if 'tours-admin' in GLOBAL.userAccess or 'tours-categories-admin' in GLOBAL.userAccess %}
+                <li class="treeview {{ GLOBAL.cname in ['AdminTours','AdminTourCategories'] ? 'active':'' }}">
+                    <a href="#"><i class="fa fa-automobile"></i> <span>Tours</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        {% if 'tours-admin' in GLOBAL.userAccess %}
+                            <li class="{{ GLOBAL.cname == 'AdminTours' ? 'active':'' }}"><a href="{{ generate_url('admin_tours') }}"><i class="fa fa-th-large"></i> <span>Tours</span></a></li>
+                        {% endif %}
+                        {% if 'tours-categories-admin' in GLOBAL.userAccess %}
+                            <li class="{{ GLOBAL.cname == 'AdminTourCategories' ? 'active':'' }}"><a href="{{ generate_url('admin_tours_categories') }}"><i class="fa fa-gear"></i> <span>Tours Categories</span></a></li>                   
+                        {% endif %}
+                    </ul>
+                </li>
+            {% endif %}
+
+            {% if 'about-admin' in GLOBAL.userAccess %}
+                <li class="{{ GLOBAL.cname == 'AdminAbout' ? 'active':'' }}"><a href="{{ generate_url('admin_about_history') }}"><i class="fa fa-cubes"></i> <span>About</span></a></li>
+            {% endif %}
+
+            {% if 'blog-admin' in GLOBAL.userAccess or 'blog-categories-admin' in GLOBAL.userAccess %}
+                <li class="treeview {{ GLOBAL.cname in ['AdminBlog','AdminBlogCategories'] ? 'active':'' }}">
+                    <a href="#"><i class="fa fa-edit"></i> <span>Blog</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        {% if 'blog-admin' in GLOBAL.userAccess %}
+                            <li class="{{ GLOBAL.cname == 'AdminBlog' ? 'active':'' }}"><a href="{{ generate_url('admin_blog_index') }}"><i class="fa fa-file-text-o"></i> <span>Blog</span></a></li>
+                        {% endif %}
+
+                        {% if 'blog-categories-admin' in GLOBAL.userAccess %}
+                            <li class="{{ GLOBAL.cname == 'AdminBlogCategories' ? 'active':'' }}"><a href="{{ generate_url('admin_blog_categories') }}"><i class="fa fa-gear"></i> <span>Blog Categories</span></a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+            {% endif %}
+
+            {% if 'contact-admin' in GLOBAL.userAccess %}
+                <li class="{% if GLOBAL.cname == 'AdminContact' and GLOBAL.method == 'index' %} active {% endif %}"><a href="{{ generate_url('admin_contact') }}"><i class="fa fa-cube"></i> <span>Contact Us</span></a></li>                   
+            {% endif %}
+
+            {% if 'gallery-admin' in GLOBAL.userAccess or 'gallery-categories-admin' in GLOBAL.userAccess %}
+                <li class="treeview {{ GLOBAL.cname in ['AdminGallery','AdminGalleryCategories'] ? 'active':'' }}">
+                    <a href="#"><i class="fa fa-picture-o"></i> <span>Gallery</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        {% if 'gallery-admin' in GLOBAL.userAccess %}
+                            <li class="{{ GLOBAL.cname == 'AdminGallery' ? 'active':'' }}"><a href="{{ generate_url('admin_gallery') }}"><i class="fa fa-file-image-o"></i> <span>Gallery</span></a></li>
+                        {% endif %}
+                        {% if 'gallery-categories-admin' in GLOBAL.userAccess %}
+                            <li class="{{ GLOBAL.cname == 'AdminGalleryCategories' ? 'active':'' }}"><a href="{{ generate_url('admin_gallery_categories') }}"><i class="fa fa-gear"></i> <span>Gallery Categories</span></a></li>                   
+                        {% endif %}
+                    </ul>
+                </li>                
+            {% endif %}
+
+            {% if 'information-admin' in GLOBAL.userAccess %}
+                <li class="{{ GLOBAL.cname == 'AdminInformation' ? 'active':'' }}"><a href="{{ generate_url('admin_information') }}"><i class="fa fa-info-circle"></i> <span>Information</span></a></li>
+            {% endif %}
+
+            {% if 'orders-admin' in GLOBAL.userAccess %}
+                <li class="{{ GLOBAL.cname == 'AdminOrders' ? 'active':'' }}"><a href="{{ generate_url('admin_orders') }}"><i class="fa fa-database "></i> <span>Orders</span></a></li>
+            {% endif %}
+        
+        </ul>
+        <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+</aside>

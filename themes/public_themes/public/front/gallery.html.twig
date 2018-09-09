@@ -1,0 +1,136 @@
+{% extends _layout %}
+{% block header %}
+  {% set fixed_header = true %}
+  {{ parent() }}
+  <!-- page inner heading -->
+  <div role="main" class="main">    
+    <div class="container">
+    <div class="row">
+      <div class="col-md-12 center">
+        <h1 class="mt-xlg mb-sm pt-md">Press <strong>&amp; </strong> Events</h1>
+        <p class="font-size-md">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu pulvinar magna.<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+
+        <hr class="custom-divider" style="background: transparent url({{ asset('img/custom-divider-1.png',true) }}) no-repeat center center;">
+      </div>
+    </div>
+  </div>
+  </header>
+  <!-- - page inner heading -->
+{% endblock %}
+{% block content %}
+<!-- section PROJECTS-->
+<link rel="stylesheet" href="{{ asset('css/demos/demo-business-consulting.css') }}">
+<link rel="stylesheet" href="{{ asset('css/demos/demo-photography.css') }}">
+<div class="container">
+  <div class="row pt-xs pb-xl mb-md">
+    <div class="col-md-12">
+      {% if gallery_categories is not empty %}
+        <ul class="nav nav-pills sort-source mb-xlg" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'masonry', 'filter': '*'}">
+          <li data-option-value="*" class="active"><a class="btn btn-borders custom-border-width btn-primary custom-border-radius custom-border-radius-small text-uppercase" href="#">Show All</a></li>
+          {% for gallery_category in gallery_categories %}
+            <li data-option-value=".{{gallery_category.name|replace({' ': "-",'&': ""}) }}"><a class="btn btn-borders custom-border-width btn-primary custom-border-radius custom-border-radius-small text-uppercase" href="#" data-filter=".{{ gallery_category.name|replace({' ': "-",'&': ""}) }}">{{ gallery_category.name }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      <div class="row">
+        <div class="sort-destination-loader sort-destination-loader-showing">
+        
+          <ul class="portfolio-list sort-destination" data-sort-id="portfolio">
+            {% for gallery in galleries %}
+              <li class="col-md-4 isotope-item {{gallery.gallery_category.name|replace({' ': "-",'&': ""})}}">
+                <a href="{{ generate_url('gallery_detail',{id:gallery.id}) }}" class="text-decoration-none caption-slide">
+                {# {{ generate_url('gallery_detail',{id:gallery.id}) }} #}
+                  <span class="thumb-info custom-thumb-info-style-1 mb-xlg pb-xs thumb-info-hide-wrapper-bg">
+                    <span class="thumb-info-wrapper m-none">
+                      <img src="{{ asset('img/gallery/',true)}}{{explode(',',gallery.img)[0]}}" class="img-responsive" alt="">
+                    </span>
+                    <span class="thumb-info-caption background-color-secondary p-md pt-xlg pb-xlg" style="text-align: center;">
+                      <span class="custom-thumb-info-title">
+                        <span class="custom-thumb-info-name font-weight-semibold text-color-dark text-md">{{gallery.caption}}</span>
+                        <span class="custom-thumb-info-desc font-weight-light">{{gallery.gallery_category.name}}</span>
+                      </span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div role="main" class="main" id="main" style="display:none;">
+				<div class="container p-none">
+					<div id="photographyLightbox" class="mfp-hide">
+						<div class="thumb-gallery">
+							<div class="owl-carousel owl-theme manual thumb-gallery-detail" id="thumbGalleryDetail">
+								{# {% for gallery in galleries %}
+									<div>
+										<span class="img-thumbnail">
+											<img alt="" src="{{ asset('img/gallery/',true)}}{{explode(',',gallery.img)}}" class="img-responsive">
+										</span>
+									</div>
+								{% endfor %} #}
+								{# <div>
+									<span class="img-thumbnail">
+										<img alt="" src="{{ asset('img/demos/photography/gallery/wedding/1.jpg',true)}}" class="img-responsive">
+									</span>
+								</div> #}
+
+							</div>
+							<div class="owl-carousel owl-theme manual thumb-gallery-thumbs show-thumbs mt" id="thumbGalleryThumbs">
+								{# {% for gallery in galleries %}
+									<div>
+										<span class="img-thumbnail cur-pointer">
+											<img alt="" src="{{ asset('img/gallery/',true)}}{{explode(',',gallery.img)}}">
+										</span>
+									</div>
+								{% endfor %} #}
+								{# <div>
+									<span class="img-thumbnail cur-pointer">
+										<img alt="" src="{{ asset('img/demos/photography/gallery/wedding/1-thumb.jpg',true)}}">
+									</span>
+								</div> #}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+			$(document).ready(function(){
+					$(".caption-slide").click(function(){
+							id_caption = $(this).data('id');
+                $.ajax({
+                type: "POST",
+                url: '{{ generate_url('gallery_detail') }}',
+                data: {
+                    id_caption : id_caption,
+                },
+                success: function(res) {
+                    var array = res.galleryImg.split(',');
+                    $('#imgSlide').html(array[0]);
+                    
+                    array.forEach(function(entry) {
+                      $("#thumbGalleryDetail").append('<div>'
+                        +'<span class="img-thumbnail">'
+                          +'<img alt="" src="{{ asset('img/gallery/',true)}}'+entry+'">'
+                        +'</span>'
+                      +'</div>');
+                      $("#thumbGalleryThumbs").append('<div>'
+                        +'<span class="img-thumbnail cur-pointer">'
+                          +'<img alt="" src="{{ asset('img/gallery/',true)}}'+entry+'" style="width:50px;height:50px;">'
+                        +'</span>'
+                      +'</div>');
+                      });
+                }
+
+                });  
+					});
+			});
+		</script>
+{% endblock %}

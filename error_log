@@ -1,0 +1,104 @@
+[11-May-2018 12:49:39 Asia/Jakarta] PHP Fatal error:  Class 'PDO' not found in /home/tawwatou/public_html/sparks/php-activerecord/0.0.2/vendor/php-activerecord/lib/Connection.php on line 101
+[11-May-2018 12:50:07 Asia/Jakarta] PHP Fatal error:  Class 'PDO' not found in /home/tawwatou/public_html/sparks/php-activerecord/0.0.2/vendor/php-activerecord/lib/Connection.php on line 101
+[11-May-2018 12:50:23 Asia/Jakarta] PHP Fatal error:  Class 'PDO' not found in /home/tawwatou/public_html/sparks/php-activerecord/0.0.2/vendor/php-activerecord/lib/Connection.php on line 101
+[11-May-2018 12:52:26 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/tawwatou/public_html/application/modules/front/controllers/Front.php on line 183
+[11-May-2018 12:53:02 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/tawwatou/public_html/application/modules/front/controllers/Front.php on line 183
+[11-May-2018 13:08:02 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/tawwatou/public_html/application/modules/front/controllers/Front.php on line 183
+[11-May-2018 13:12:47 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/tawwatou/public_html/application/modules/front/controllers/Front.php on line 183
+[11-May-2018 13:15:00 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/tawwatou/public_html/application/core/XE_PublicController.php on line 44
+[11-May-2018 13:15:24 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/tawwatou/public_html/application/core/XE_PublicController.php on line 44
+[11-May-2018 13:19:11 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/tawwatou/public_html/application/core/XE_PublicController.php on line 44
+[11-May-2018 13:19:13 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/tawwatou/public_html/application/core/XE_PublicController.php on line 44
+[11-May-2018 13:19:30 Asia/Jakarta] PHP Fatal error:  Class 'PDO' not found in /home/tawwatou/public_html/sparks/php-activerecord/0.0.2/vendor/php-activerecord/lib/Connection.php on line 101
+[17-Jul-2018 04:05:13 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[17-Jul-2018 04:05:14 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[17-Jul-2018 10:38:54 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[17-Jul-2018 10:38:58 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[17-Jul-2018 13:33:23 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[17-Jul-2018 13:33:23 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[17-Jul-2018 15:23:22 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[17-Jul-2018 20:49:25 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[17-Jul-2018 20:49:49 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 01:54:19 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 01:54:22 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 13:08:39 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 14:48:57 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 15:08:04 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 15:08:08 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 15:18:18 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 15:18:19 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 17:42:33 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 17:42:34 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 17:43:12 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 17:44:00 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 17:55:37 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 17:55:38 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 18:22:43 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 19:20:03 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 20:52:58 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:11 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:12 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:12 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:12 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:13 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:14 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:17 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:17 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:20 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:20 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:21 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:21 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:25 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:25 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:27 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:27 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:29 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:29 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:32 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:32 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:34 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:34 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:36 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:36 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:37 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:38 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:40 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:41 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:43 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:45 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:45 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:47 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:47 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:49 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:49 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:51 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:51 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:53 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:54 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:55 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:56 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:58 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:11:58 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:00 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:00 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:01 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:03 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:04 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:05 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:09 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:09 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:12 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:12 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:13 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:15 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:16 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:17 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:18 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:19 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:20 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:21 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:21 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:22 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:23 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 21:12:24 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0
+[18-Jul-2018 23:37:47 Asia/Jakarta] PHP Warning:  i360: Error in global initialization 1 in Unknown on line 0

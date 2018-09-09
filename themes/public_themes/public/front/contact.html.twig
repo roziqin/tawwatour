@@ -1,0 +1,95 @@
+{% extends _layout %}
+{% block content %}
+<header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{ asset('img/',true)}}header-mini4.jpg"
+  data-background-mobile="{{ asset('img/',true)}}header-mini4.jpg" class="ct-mediaSection">
+  <div class="ct-breadcrumbs">
+    <ul class="list-inline list-unstyled text-uppercase">
+      <li>
+        <a href="{{ base_url() }}">
+          <i class="fa fa-home"></i>
+        </a>
+        <i class="fa fa-angle-right"></i>Hubungi Kami</li>
+    </ul>
+  </div>
+</header>
+<section class="ct-u-paddingTop80 ct-u-paddingBottom90">
+  <div class="container">
+    <div class="ct-heading--withBorder ct-heading--withBorderGrey ct-u-marginBottom50">
+      <h4 class="ct-u-colorMotive text-uppercase ct-u-marginBottom10">Kepuasan anda adalah prioritas utama kami</h4>
+      <p>Apabila ada pertanyaan mengenai trip yang diinginkan, jangan sungkan untuk bertanya kepada kami, Tim kami akan merespon secepatnya.</p>
+    </div>
+    <div class="ct-js-googleMap--contact ct-u-marginBottom50"></div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="ct-textBox--small ct-u-backgroundGrey">
+          <ul class="list-unstyled ct-list--circleWithIcons ct-list--circleWithIcons-bordered">
+            <li>
+              <span class="ct-list-iconContainer">
+                <i class="fa fa-map-marker"></i>
+              </span>
+              <h6 class="ct-u-marginBottom10">Alamat</h6>
+              <p>
+                 {{ getSettingValue('company_address').value }}
+              </p>
+            </li>
+            <li>
+              <span class="ct-list-iconContainer">
+                <i class="fa fa-phone"></i>
+              </span>
+              <h6 class="ct-u-marginBottom10">No Telp</h6>
+              <p>{{ getSettingValue('company_phone').value }}</p>
+            </li>
+            <li>
+              <span class="ct-list-iconContainer">
+                <i class="fa fa-envelope"></i>
+              </span>
+              <h6 class="ct-u-marginBottom10">Email</h6>
+              <a href="#">{{ getSettingValue('company_email').value }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <h4 class="ct-u-marginBottom30">Ada Pertanyaan? Silakan isi form dibawah :</h4>
+        <div role="alert" class="successMessage alert alert-success alert-dismissible" id="contactSuccess">
+          <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+            <span aria-hidden="true">�</span>
+          </button>
+          <strong>Success!</strong>Message has been sent to us.
+        </div>
+        <div role="alert" class="errorMessage alert alert-danger alert-dismissible" id="contactError">
+          <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+            <span aria-hidden="true">�</span>
+          </button>
+          <strong>Error!</strong>Error sending your message.
+        </div>
+        <form  id="contactForm" action="" method="POST" class="validateIt ct-u-marginBottom30 ct-form ct-form-grey">
+          <div class="row">
+            <div class="col-md-6">
+              <input id="contact_name" data-error-message="Name" placeholder="Nama Anda" type="text" required="" name="contact_name" class="form-control input--withBorder ct-u-marginBottom10 input-focusMotive">
+              <label for="contact_name" class="sr-only"></label>
+            </div>
+            <div class="col-md-6">
+              <input id="contact_email" data-error-message="Email" placeholder="Alamat Email (ex. nama@company.com)" type="email" required="" name="contact_email" class="form-control input--withBorder ct-u-marginBottom10 input-focusMotive">
+              <label for="contact_email" class="sr-only"></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <input id="contact_phone" data-error-message="Phone" placeholder="No Telepon / HP" type="number" required="" name="contact_phone" class="form-control input--withBorder ct-u-marginBottom10 input-focusMotive">
+              <label for="contact_phone" class="sr-only"></label>
+            </div>
+            <div class="col-md-6">
+              <input id="contact_address" data-error-message="Address" placeholder="Alamat Rumah / Kantor" type="number" required="" name="contact_address" class="form-control input--withBorder ct-u-marginBottom10 input-focusMotive">
+              <label for="contact_address" class="sr-only"></label>
+            </div>
+          </div>
+          <textarea id="contact_message" data-error-message="Message is required" placeholder="Pesan Anda" rows="8" required="" name="contact_message"
+            title="Message" class="form-control input--withBorder ct-u-marginBottom20 input-focusMotive ct-u-marginBottom20"></textarea>
+          <button class="btn btn-primary btn-lg text-uppercase">KIRIM PESAN</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

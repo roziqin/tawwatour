@@ -1,0 +1,7 @@
+<p style="text-align: center;float:left;width: 80%;">
+  <marquee onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="100">
+    {% for news in data %}
+      {{ news.title }}&emsp;|&emsp;
+    {% endfor %}
+  </marquee>
+</p>

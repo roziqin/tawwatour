@@ -1,0 +1,61 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Order
+        <small>list of all order</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Order</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message }}
+    <div class="box">
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hovered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Order Date</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Service</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ tanggal_indo(order.created_at|date('Y-m-d')) }}</td>
+                                <td>{{ order.fullname }}</td>
+                                <td>{{ order.email }}</td> 
+                                <td>{{ order.phone }}</td>
+                                <td>{{ order.address }}</td>
+                                <td>{{ order.service }}</td>
+                                <td>{{ format_angka(order.price) }}</td>
+                                <td>{{ order.qty }}</td>
+                                <td>{{ order.note }}</td>                                
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="8"><div class="alert alert-danger">No Data</div></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+    </script>
+{% endblock %}

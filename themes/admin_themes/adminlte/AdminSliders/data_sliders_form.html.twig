@@ -1,0 +1,52 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Sliders
+        <small>form</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Sliders</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message is defined and message is not empty ? message : '' }}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="sliders_title">Title <span class="text-red">*</span></label>
+                            <input type="text" class="form-control alphanumeric" id="sliders_title" name="sliders_title" placeholder="Enter Title" value="{{ sliders is defined ? sliders.title : '' }}" required >
+                            <span class="help-block" style="color:red">*Name is required</span>
+                        </div>         
+                        <div class="form-description">
+                            <label for="sliders_subtitle">Subtitle</label>
+                            <input type="text" class="form-control alphanumeric" id="sliders_subtitle" name="sliders_subtitle" placeholder="Enter Subtitle" value="{{ sliders is defined ? sliders.subtitle : '' }}">
+                        </div>        
+                        <div class="form-description">
+                            <label for="sliders_description">Description</label>
+                            <input type="text" class="form-control alphanumeric" id="sliders_description" name="sliders_description" placeholder="Enter Sliders Description" value="{{ sliders is defined ? sliders.description : '' }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="sliders_image">Image</label>
+                            <input type="file" id="sliders_image" name="sliders_image">
+                            <p class="help-block">Type: jpg/png | Max Size: 300kb | Recommended Dimension: 1920x650 pixel</p>
+                        </div>               
+                    </div>
+                    <div class="box-footer">
+                        <a href="{{ generate_url('admin_sliders') }}" class="btn btn-warning"><i class="fa fa-chevron-left"></i> Back</a>
+                        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+    </script>
+{% endblock %}

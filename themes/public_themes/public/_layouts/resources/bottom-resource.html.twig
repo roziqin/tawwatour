@@ -1,0 +1,56 @@
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/light-gallery/js/lightGallery.js') }}"></script>
+<script src="{{ asset('js/main-compiled.js') }}"></script>
+<script src="{{ asset('js/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset('js/magnific-popup/init.js') }}"></script>
+<script src="{{ asset('js/isotope/jquery.isotope.min.js') }}"></script>
+<script src="{{ asset('js/isotope/imagesloaded.js') }}"></script>
+<script src="{{ asset('js/isotope/infinitescroll.min.js') }}"></script>
+<script src="{{ asset('js/isotope/init.js') }}"></script>
+<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5af14f92e12a39001287de44&product=inline-share-buttons"></script>
+<script>
+    $(document).on('click', '.btn-navigasi', function () {
+        var data = $(this).attr("data-class");
+        $('.tab-content').hide();
+        if(data == 'ringkasan'){
+            $('.ringkasan').show();
+        }else if (data == 'fasilitas') {
+            $('.fasilitas').show();
+        }else if (data == 'itinerary') {
+            $('.itinerary').show();
+        }
+    });
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116675335-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-116675335-1');
+</script>
+
+<!-- BEGIN JIVOSITE CODE {literal} -->
+<script type='text/javascript'>
+    (function () {
+        var widget_id = '0JywsUdDeS'; var d = document; var w = window; function l() {
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/' + widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);
+        } if (d.readyState == 'complete') { l(); } else { if (w.attachEvent) { w.attachEvent('onload', l); } else { w.addEventListener('load', l, false); } }
+    })();</script>
+<!-- {/literal} END JIVOSITE CODE -->
+<!-- Theme Text Sliders -->
+{# {% if GLOBAL.method == 'blog_detail' %}
+    <script src="{{ asset('js/demos/demo-photography.js')}}"></script>
+{% endif %}
+{% if GLOBAL.method == 'gallery_detail' %}
+    <script src="{{ asset('js/demos/demo-photography.js')}}"></script>
+{% endif %}
+{% if GLOBAL.method == 'gallery' %}
+    <script src="{{ asset('js/demos/demo-business-consulting.js')}}"></script>
+    <script src="{{ asset('js/demos/demo-photography.js')}}"></script>
+{% endif %}
+
+{% if GLOBAL.method == 'tour' %}
+    <script src="{{ asset('js/demos/demo-business-consulting.js')}}"></script>
+{% endif %} #}

@@ -1,0 +1,48 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Quotes
+        <small>form</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Quotes</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message is defined and message is not empty ? message : '' }}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="quotes_name">Name <span class="text-red">*</span></label>
+                            <input type="text" class="form-control alphanumeric" id="quotes_name" name="quotes_name" placeholder="Enter Quotes Name" value="{{ quotes is defined ? quotes.name : '' }}" required >
+                            <span class="help-block" style="color:red">*Name is required</span>
+                        </div>      
+                        <div class="form-description">
+                            <label for="quotes_description">Description</label>
+                            <input type="text" class="form-control alphanumeric" id="quotes_description" name="quotes_description" placeholder="Enter Quotes Name" value="{{ quotes is defined ? quotes.description : '' }}">
+                        </div> 
+                        {# <div class="form-group">
+                            <label for="quotes_image">Image</label>
+                            <input type="file" id="quotes_image" name="quotes_image">
+                            <p class="help-block">Type: jpg/png | Max Size: 300kb</p>
+                        </div>                #}
+                    </div>
+                    <div class="box-footer">
+                        <a href="{{ generate_url('admin_quotes_index') }}" class="btn btn-warning"><i class="fa fa-chevron-left"></i> Back</a>
+                        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+    </script>
+{% endblock %}

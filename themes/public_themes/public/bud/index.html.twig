@@ -1,0 +1,246 @@
+{% extends _layout %}
+{% block content %}
+    <header id="home" class="ct-u-colorWhite text-left">
+      {% if sliders != null %}
+      <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="3000"
+        data-draggable="true" data-touchMove="false" data-arrows="true" data-items="1" class="ct-slick ct-js-slick">
+        {% for slider in sliders %}
+        <div data-bg="{{ asset('img/slides/',true)}}{{slider.img}}" class="item">
+          <div class="ct-slick-inner">
+            <div class="ct-slick-content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-7"></div>
+                  <div class="col-md-5">
+                    <div class="col-md-7">
+                      <h1 class=" ct-u-marginBottom60 ct-fw-300">
+                        <h1 class=" ct-u-marginBottom40 ct-fw-300">
+                          <span class="ct-u-text-big text-uppercase">.</span>
+                          .
+                        </h1>
+                        <p class="ct-u-marginBottom20">.</p>
+                        {% if loop.index == 1 %}
+                        <p class="ct-u-marginBottom20">.</p>
+                        {% endif %}
+                      </h1>
+
+                      {% if loop.index > 1 %}
+                      <a href="#packages" class="btn btn-lg btn-default btn-transparent text-uppercase ct-js-btnScroll">LIHAT DETIL</a>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </header>
+    <section id="packages" class="ct-u-decoration--triangleBefore ct-u-backgroundMotive">
+      <div class="container">
+        <div class="ct-heading--withBorder ct-u-marginBottom70">
+          <h4 class="ct-u-colorWhite text-uppercase ct-u-marginBottom10">PAKET TERPOPULER</h4>
+          <p class="ct-u-colorBlueLight">Kami menyediakan berbagai pilihan paket wisata yang dapat anda pilih sesuai kebutuhan.</p>
+        </div>
+        <div class="row">
+          {% for tour in tours %}
+          <div class="col-md-6">
+            <div class="ct-productBox ct-u-marginBottom40">
+              <div class="ct-productBox-image">
+                <div class="ct-productBox-imageContainer">
+                  <a href="{{ base_url() }}tour/{{ tour.alias_parent }}/{{ tour.alias_category }}/{{ tour.alias }}">
+                    <img src="{{ asset('img/tours/',true)}}{{tour.thumbnail}}" alt="Product" width="255" height="255">
+                  </a>
+                </div>
+              </div>
+              <div class="ct-productBox-Description text-center">
+                <div class="ct-productBox-DescriptionInner text-center">
+                  <a href="{{ base_url() }}tour/{{ tour.alias_parent }}/{{ tour.alias_category }}/{{ tour.alias }}">
+                    <h5 class="text-uppercase ct-u-marginBottom20 ct-fw-700">{{ tour.name }}</h5>
+                  </a>
+                </div>
+                <div class="ct-productBox-Meta text-center">
+                  <!--
+                  <div class="ct-productBox-deliveryInformation text-center">
+                    <div class="ct-u-displayTableRow">
+                      <div class="ct-productBox-MetaItem">
+                        <span class="h5 text-uppercase">{{ tour.name_parent }}</span>
+                      </div>
+                    </div>
+                    <div class="ct-u-displayTableRow">
+                      <div class="ct-productBox-MetaItem">
+                        <span class="h5 text-uppercase">{{ tour.name_category }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  -->
+                  <a href="{{ base_url() }}tour/{{ tour.alias_parent }}/{{ tour.alias_category }}/{{ tour.alias }}" class="btn btn-primary btn-xs text-uppercase ct-u-marginBoth10 col-md-12">LIHAT DETIL</a>
+                  <a target="_blank" href="https://api.whatsapp.com/send?phone={{ getSettingValue('company_whatsapp').value }}" class="btn btn-primary btn-xs text-uppercase ct-u-marginBoth10 col-md-12">BOOKING</a>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          <div class="col-md-12 ct-u-paddingBottom20">
+            <a href="{{ base_url() }}tour" class="btn btn-lg btn-default text-uppercase col-md-12">LIHAT DAFTAR SEMUA PAKET</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--
+    <section class="ct-u-paddingBoth30">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="col-sm-4">
+              <div class="ct-iconBox ct-u-marginBottom10">
+                <a href="rewards.html">
+                  <div class="ct-iconBox-icon">
+                    <i class="fa fa-crosshairs"></i>
+                  </div>
+                  <div class="ct-iconBox-description">
+                    <h5 class="text-uppercase ct-fw-700 ct-u-colorMotive ct-u-marginBottom20">FOKUS</h5>
+                    <p>Kami fokus kepada pelanggan dengan memberikan pelayanan yang terpercaya, ramah, aman dan bisa diandalkan.</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="ct-iconBox ct-u-marginBottom10">
+                <a href="rewards.html">
+                  <div class="ct-iconBox-icon">
+                    <i class="fa fa-users"></i>
+                  </div>
+                  <div class="ct-iconBox-description">
+                    <h5 class="text-uppercase ct-fw-700 ct-u-colorMotive ct-u-marginBottom20">KEPEMIMPINAN</h5>
+                    <p>Kami akan berusaha untuk menjadi yang terdepan dengan melakukan pengembangan teknologi dan komunikasi.</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="ct-iconBox ct-u-marginBottom10">
+                <a href="rewards.html">
+                  <div class="ct-iconBox-icon">
+                    <i class="fa fa-thumbs-up"></i>
+                  </div>
+                  <div class="ct-iconBox-description">
+                    <h5 class="text-uppercase ct-fw-700 ct-u-colorMotive ct-u-marginBottom20">KEAHLIAN</h5>
+                    <p>Kami memiliki tim yang sangat ahli dalam bidang Tour & Travel, dengan mengutamakan keamanan dan kenyamanan.</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
+    <section class="ct-u-paddingBottom20 ct-u-paddingTop60">
+      <div class="container">
+        <div class="row">
+          <div class="ct-heading--striped text-uppercase ct-u-marginBottom50">
+            <h4 class="pull-left">Gallery Trip Kami</h4>
+            <a href="#" class="btn btn-default btn-xs pull-right">Lihat Semua</a>
+            <div class="clearfix"></div>
+            <div class="ct-right-extension"></div>
+          </div>
+          <div class="col-sm-12">
+            <!-- InstaWidget -->
+            <a href="https://instawidget.net/v/user/tawwatour" id="link-2ca4f64c2e6b91ea5d026299d17352b5ec0250d222e4ad93618a3837a3f31d09">@tawwatour</a>
+            <script src="https://instawidget.net/js/instawidget.js?u=2ca4f64c2e6b91ea5d026299d17352b5ec0250d222e4ad93618a3837a3f31d09&width=100%"></script>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--
+    <section class="ct-u-backgroundMotive ct-u-colorWhite ct-u-paddingBoth20">
+      <div class="container ct-u-relative ct-u-paddingTop20">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 col-lg-offset-0 col-lg-7 ct-u-z-index4">
+            <h4 class="text-uppercase">BERLANGGANAN</h4>
+            <div class="ct-divider--doubleBorder ct-u-marginBoth20"></div>
+            <p class="ct-u-marginBottom20">Daftarkan email anda untuk menerima berita & penawaran terbaru dari kami:</p>
+            <div role="alert" class="successMessage alert alert-success alert-dismissible">
+              <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+                <span aria-hidden="true">�</span>
+              </button>
+              <strong>Success!</strong>Congratulation, mission success
+            </div>
+            <div role="alert" class="errorMessage alert alert-danger alert-dismissible">
+              <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+                <span aria-hidden="true">�</span>
+              </button>
+              <strong>Danger!</strong>You did something wrong
+            </div>
+            <form action="./assets/form/send.php" method="POST" class="validateIt ct-u-marginBottom30">
+              <div class="input-group input--withIcon">
+                <span class="input-icon">
+                  <i class="fa fa-envelope"></i>
+                </span>
+                <input type="email" required="" name="field[]" class="form-control input-lg">
+                <span class="input-group-btn">
+                  <button class="btn btn-default btn-transparent text-uppercase">Subscribe</button>
+                </span>
+              </div>
+            </form>
+            <ul class="list-unstyled ct-list--circleWithIcons ct-u-marginBottom60">
+              <li>
+                <span class="ct-list-iconContainer">
+                  <i class="fa fa-usd"></i>
+                </span>Voucher potongan harga dari kami.</li>
+              <li>
+                <span class="ct-list-iconContainer">
+                  <i class="fa fa-gift"></i>
+                </span>Paket trip terbaru dari kami.</li>
+              <li>
+                <span class="ct-list-iconContainer">
+                  <i class="fa fa-unlock-alt"></i>
+                </span>Informasi destinasi wisata yang kekinian.</li>
+            </ul>
+          </div>
+        </div>
+        <img src="./assets/images/content/guide-tour/subscribe-image.png" data-bottom="0" data-right="-210" alt="sub image" class="ct-js-imageOffset ct-u-z-index3">
+      </div>
+    </section>
+    <section itemscope itemtype="http://schema.org/Blog" class="ct-u-paddingBoth80 ct-blog">
+      <div class="container">
+        <div class="ct-heading--withBorder ct-heading--withBorderGrey ct-u-marginBottom40">
+          <h4 class="ct-u-colorMotive text-uppercase ct-u-marginBottom10">WISATA KEKINIAN</h4>
+          <p>Daftar dan rekomendasi tempat wisata baru di Malang yang paling bagus serta lagi hits dikalangan para wisatawan. Lengkap
+          dari mulai wisata alam, pantai, kuliner khas yang enak, tempat belanja, tempat nongkrong malam hari, wisata religi, sejarah
+          candi, edukasi, sampai pada wahana permainan untuk anak dan keluarga ada semua disini.</p>
+        </div>
+        <div class="row">
+          {% if blogs != null %}
+          {% for blog in blogs %}
+          <div class="col-sm-6 col-md-3">
+            <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" class="ct-article ct-fw-600 ct-article--grey">
+              {% if blog.img != null %}
+              <a href="{{ base_url() }}blog/{{ blog.alias }}" itemprop="url">
+                <img src="{{ asset('img/blogs/',true)}}{{explode(',',blog.img)[0]}}" alt="Blog Post" itemprop="image">
+              </a>
+              {% endif %}
+              <div class="ct-article-body">
+                <div class="ct-article-title">
+                  <a href="{{ base_url() }}blog/{{ blog.alias }}" itemprop="url">
+                    <h5 class="text-uppercase ct-u-colorMotive ct-fw-700">{{blog.caption}}</h5>
+                  </a>
+                </div>
+                <div itemprop="text" class="ct-article-description">
+                  <p>{{description[loop.index -1]}}</p>
+                  <a href="{{ base_url() }}blog/{{ blog.alias }}" itemprop="url" class="btn-primary btn-xs btn text-uppercase">Baca Lebih Lanjut</a>
+                </div>
+              </div>
+            </article>
+          </div>
+          {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    -->
+{% endblock %}

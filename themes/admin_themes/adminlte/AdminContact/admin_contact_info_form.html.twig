@@ -1,0 +1,58 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Contact Information
+        <small>form</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Contact Information</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message is defined and message is not empty ? message : '' }}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="company_logo">Company Logo</label>
+                            <input type="file" id="company_logo" name="company_logo">
+                            <p class="help-block">Type: jpg/png | Max Size: 300kb | Recommended Dimension: width 300 pixel</p>
+                        </div> 
+                        <div class="form-group">
+                            <label for="company_contact_background">Company Background</label>
+                            <input type="file" id="company_contact_background" name="company_contact_background">
+                            <p class="help-block">Type: jpg/png | Max Size: 300kb | Recommended Dimension: 1920x1080 pixel</p>
+                        </div> 
+                        <div class="form-group">
+                            <label for="company_contact_intro">Company Information</label>
+                            <textarea type="text" class="form-control" id="company_contact_intro" name="company_contact_intro" placeholder="Enter Contact Information">{{ company_contact_intro is defined ? company_contact_intro.value : '' }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="company_address">Company Address</label>
+                            <textarea type="text" class="form-control" id="company_address" name="company_address" placeholder="Enter Company Address">{{ company_address is defined ? company_address.value : '' }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="company_phone">Company Phone</label>
+                            <input type="number" class="form-control numeric" id="company_phone" name="company_phone" placeholder="Enter Company Phone" value="{{ company_phone is defined ? company_phone.value : '' }}"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="company_email">Company Email</label>
+                            <input type="email" class="form-control" id="company_email" name="company_email" placeholder="Enter Company Email" value="{{ company_email is defined ? company_email.value : '' }}"></input>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button href="{{ generate_url('admin_contact_information_form') }}" class="btn btn-success pull-right"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+    </script>
+{% endblock %}

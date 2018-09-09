@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block top_resource %}
+            {% include resource('back/top-resource') %}
+        {% endblock %}    
+        <title>{{title}}</title>
+    </head>
+    <body class="menubar-hoverable header-fixed menubar-first">
+        <header id="header">
+            {% block header %}
+                {% include resource('back/header') %}
+            {% endblock %}
+        </header>
+        <div id="base">
+            <!-- BEGIN OFFCANVAS LEFT -->
+            <div class="offcanvas">
+            </div><!--end .offcanvas-->
+            <div id="content">
+                <section>
+                    <div class="section-body">
+                    <div class="hidden-lg alert alert-warning text-lg">Harap menggunakan <code>komputer desktop</code> atau <code>laptop</code> untuk kenyamanan penggunaan aplikasi.</div>
+                    {% block message %}
+                        {% include resource('back/message') %}
+                    {% endblock %}
+                    {% block content %}
+
+                    {% endblock %}
+                    </div>
+                </section>
+            </div>
+            <aside>
+                {% block sidebar %}
+                    {% include resource('back/sidebar') %}
+                {% endblock %}
+            </aside>
+            <footer>
+                {% block footer %}
+                    {% include resource('back/footer') %}
+                {% endblock %}
+            </footer>
+        </div>
+        {% block bottom_resource %}
+            {% include resource('back/bottom-resource') %}
+        {% endblock %}
+    </body>
+</html>

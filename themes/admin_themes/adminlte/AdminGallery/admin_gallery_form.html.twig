@@ -1,0 +1,93 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Gallery
+        <small>form</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Gallery</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message is defined and message is not empty ? message : '' }}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="gallery_caption">Caption <span class="text-red">*</span></label>
+                            <input type="text" class="form-control alphanumeric" id="gallery_caption" name="gallery_caption" placeholder="Enter Gallery Caption" value="{{ galleries is defined ? galleries.caption : '' }}" required >
+                            <span class="help-block" style="color:red">*Name is required</span>
+                        </div> 
+                        <div class="form-description">
+                            <label for="gallery_category">Category</label>
+                            <select class="form-control" id="gallery_category" name="gallery_category" placeholder="Enter Category" required>
+                                <option value="" readonly>Choose Category</option>
+                                {% for category in gallery_categories %}
+                                    <option {% if galleries.id_gallery_category == category.id %}selected {% endif %} value="{{ category.id }}">{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div> 
+                        {% set img_gallery_temp = explode(',',galleries.img) %} 
+                        {% if galleries.img is not empty %}
+                        <div class="form-group">
+                        <label for="gallery_category">Images</label>
+                        <div class="col-md-12">
+                            {% for img_gallery in img_gallery_temp %}
+                                <div class="col-md-4"><img src="{{ asset('img/gallery/' ~ img_gallery ,true) }}" style="width:120px"></div>
+                                <div class="col-md-2"><a href="{{ generate_url('admin_gallery_image_delete',{id:galleries.id,img_name:img_gallery}) }}" class="btn btn-sm btn-flat btn-danger btn-confirm" style="margin-left:5px;">HAPUS</a></div>
+                            {% endfor %}
+                        </div>
+                        </div> 
+                        {% endif %}
+                        <div class="form-group">
+                            <label for="gallery_image">Image</label>
+                            <div class="input_fields_wrap">
+                                <div class="newinput">
+                                    <div class="col-md-6">
+                                        <input type="file" id="gallery_image" name="gallery_image[]">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button id="add_field_button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <p class="help-block">Type: jpg/png | Max Size: 300kb | Recommended Dimension: 533 x 533 pixel</p>
+                            </div>           
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <a href="{{ generate_url('admin_gallery') }}" class="btn btn-warning"><i class="fa fa-chevron-left"></i> Back</a>
+                        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+        $(document).ready(function() {
+            var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+            var add_button      = $("#add_field_button"); //Add button ID
+            
+            
+            var x = {{ travelpass_bookings|length }}; //initlal text box count
+            $(add_button).click(function(e){ //on add input button click
+                e.preventDefault();
+                x++; //text box increment
+
+                $(wrapper).append('<div class="newinput'+x+'"><div class="col-md-6"><input type="file" id="gallery_image" name="gallery_image[]"></div><div class="col-md-1"><button id="remove_field" class="btn btn-danger pull-right"><i class="fa fa-trash"></i></button></div></div>'); //add input box
+            });
+            
+            $(wrapper).on("click","#remove_field", function(e){ //user click on remove text
+                e.preventDefault(); $(".newinput"+x).remove(); x--;
+            })
+        });
+    </script>
+{% endblock %}

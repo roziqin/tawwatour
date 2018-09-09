@@ -1,0 +1,75 @@
+{% spaceless %}
+{% set assets_css = [
+        'theme/bootstrap/css/bootstrap.min.css',
+        'theme/font-awesome/css/font-awesome.min.css',
+        'theme/ionicons/css/ionicons.min.css',
+        'theme/plugins/datepicker/datepicker3.css',
+        'theme/plugins/select2/select2.min.css',
+        'theme/plugins/pace/pace.min.css',
+        'theme/dist/css/AdminLTE.min.css',
+        'theme/dist/css/skins/skin-blue.min.css',
+        'css/custom.css',
+        'theme/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
+        'theme/plugins/iCheck/all.css',
+    ]
+%}
+{% set assets_js = [
+        'theme/plugins/jQuery/jquery-2.2.3.min.js',
+        'theme/plugins/jQuery/jquery-dateformat.min.js',
+        'theme/bootstrap/js/bootstrap.min.js',
+        'theme/plugins/datepicker/bootstrap-datepicker.js',
+        'theme/plugins/select2/select2.min.js',
+        'theme/plugins/slimScroll/jquery.slimscroll.min.js',
+        'theme/plugins/pace/pace.min.js',
+        'theme/dist/js/app.min.js',
+        'js/init.js',
+        'js/global.js',
+        'theme/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js',
+        'theme/plugins/iCheck/icheck.min.js',
+        'theme/plugins/iCheck/icheck.js',
+    ]
+%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        {% include resource('top-resource') %}
+        <title>{{title}}</title>
+    </head>
+    <body class="hold-transition skin-blue">
+        <div class="wrapper">
+            {% include resource('header') %}
+            {% include resource('sidebar') %}
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    {% block content_header %}
+                        {#
+                        <h1>Page Header<small>Optional description</small></h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                            <li class="active">Here</li>
+                        </ol>
+                        #}
+                    {% endblock %}
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    {% block content %}{% endblock %}
+                </section>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+            {% include resource('footer') %}
+            {% include resource('sidebar-right') %}
+        </div>
+        {% include resource('bottom-resource') %}
+        {% block bottom_resource %}{% endblock %}
+    </body>
+</html>
+{% endspaceless %}

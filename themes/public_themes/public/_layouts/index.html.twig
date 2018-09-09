@@ -1,0 +1,31 @@
+{% spaceless %}
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html itemscope itemtype="https://schema.org/" id="ie6" class="ie" lang="en-US"><![endif]-->
+<!--[if IE 7 ]>   <html itemscope itemtype="https://schema.org/" id="ie7" class="ie" lang="en-US"><![endif]-->
+<!--[if IE 8 ]>   <html itemscope itemtype="https://schema.org/" id="ie8" class="ie" lang="en-US"><![endif]-->
+<!--[if IE 9 ]>   <html itemscope itemtype="https://schema.org/" id="ie9" class="ie" lang="en-US"><![endif]-->
+<!--[if gt IE 9]><!-->
+<html itemscope itemtype="https://schema.org/" lang="en-US">
+<!--<![endif]-->
+    <head>
+        {% include resource('top-resource') %}
+    </head>
+    <body class="cssAnimate ct-headroom--scrollUpMenu">
+        <div class="ct-preloader">
+            <div class="ct-preloader-content"></div>
+        </div>
+        
+        {% include resource('nav-mobile') %}
+        
+        <div id="ct-js-wrapper" class="ct-pageWrapper">
+        {% include resource('header') %}
+        
+        {% block content %} {% endblock %}
+
+        {% include resource('footer') %}
+        </div>
+        <a class="scroll-to-top" id="js-scroll-to-top" href="#"></a>
+        {% include resource('bottom-resource') %}
+    </body>
+</html>
+{% endspaceless %}

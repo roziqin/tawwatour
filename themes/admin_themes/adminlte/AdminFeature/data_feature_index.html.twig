@@ -1,0 +1,67 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Service
+        <small>list of all service</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Service</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message }}
+    <div class="box">
+        <div class="box-header">
+            <a href="{{ generate_url('admin_data_feature_form') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> New Service</a>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hovered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Description Summary</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for feature in features %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ feature.name }}</td>
+                                <td>{{ description[loop.index -1] }}</td>
+                                <td>{{ feature.description_summary}}</td>
+                                <td>
+                                    <center>
+                                        {% if features and feature.img is not empty %}
+                                            <img src="{{ asset('images/feature/' ~ feature.img ,true) }}" style="width:50px">
+                                        {% else %}
+                                            <img src="{{ asset('images/feature/default.png',true) }}" style="width:50px">
+                                        {% endif %}
+                                    </center>
+                                <td>
+                                    <a href="{{ generate_url('admin_data_feature_detail',{id:feature.id}) }}" class="btn btn-sm btn-success">detail</a> 
+                                    <a href="{{ generate_url('admin_data_feature_form') }}?mode=edit&id={{feature.id}}" class="btn btn-sm btn-warning" style="margin-left:5px;">edit</a> 
+                                    <a href="{{ generate_url('admin_data_feature_delete',{id:feature.id}) }}" class="btn btn-sm btn-danger btn-confirm" style="margin-left:5px;">delete</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5"><div class="alert alert-danger">No Data</div></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+    </script>
+{% endblock %}

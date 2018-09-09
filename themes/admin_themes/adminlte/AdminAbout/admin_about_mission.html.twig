@@ -1,0 +1,85 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        About Us - Mission
+        <small>form</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">About Us - Mission</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message is defined and message is not empty ? message : '' }}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="mission_title">Title</label>
+                            <input type="text" class="form-control" id="mission_title" name="mission_title" placeholder="Enter Title" value="{{ company_mission_title is defined ? company_mission_title.value : '' }}"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="mission_image">Company Mission</label>
+                            <input type="file" id="mission_image" name="mission_image">
+                            <p class="help-block">Type: jpg/png | Max Size: 300kb | Recommended Dimension: 570 x 570 pixel</p>
+                        </div>
+                        <div class="input_fields_wrap">
+                            <div class="box-footer">
+                                <button id="add_field_button" class="btn btn-primary pull-left"><i class="fa fa-plus"></i> Add Mission</button>
+                            </div>
+                            {% for mission in company_mission_item %}
+                            <div class="newinput{{loop.index}}">
+                            <hr>
+                            <div class="form-group">
+                                <div class="col-xs-4">
+                                    <label for="about_description">Icon{{loop.index}}</label>
+                                    <input type="text" class="form-control col-xs-5" id="company_logo" name="icon[]" placeholder="icon" value="{{ mission is defined ? mission.icon : '' }}">
+                                </div>
+                                <div class="col-xs-5">
+                                    <label for="about_description">Title{{loop.index}}</label>
+                                    <input type="text" class="form-control col-xs-5" id="company_logo" name="title[]" placeholder="icon" value="{{ mission is defined ? mission.title : '' }}">
+                                </div>
+                                <div class="col-xs-3">
+                                    <label for="about_description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                    <button id="remove_field" class="btn btn-danger pull-right"><i class="fa fa-arrows-alt"></i> Delete</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="about_description">Description{{loop.index}}</label>
+                                <textarea type="text" class="form-control" id="about_description" name="description[]" placeholder="Enter About Description">{{ mission is defined ? mission.description : '' }}</textarea>
+                            </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+        $(document).ready(function() {
+            var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+            var add_button      = $("#add_field_button"); //Add button ID
+            
+            var x = {{ company_mission_item|length }}; //initlal text box count
+            $(add_button).click(function(e){ //on add input button click
+                e.preventDefault();
+                x++; //text box increment
+                $(wrapper).append('<div class="newinput'+x+'"><hr><div class="form-group"><div class="col-xs-4"><label for="about_description">Icon</label><input type="text" class="form-control col-xs-5" id="company_logo" name="icon[]" placeholder="icon"></div><div class="col-xs-5"><label for="about_description">Title</label><input type="text" class="form-control col-xs-5" id="company_logo" name="title[]" placeholder="icon"></div><div class="col-xs-3"><label for="about_description">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><button id="remove_field" class="btn btn-danger pull-right"><i class="fa fa-arrows-alt"></i> Delete</button></div></div><div class="form-group"><label for="about_description">Description</label><textarea type="text" class="form-control" id="about_description" name="description[]" placeholder="Enter About Description">{{ history is defined ? history[0].description : '' }}</textarea></div></div>'); //add input box
+            });
+            
+            $(wrapper).on("click","#remove_field", function(e){ //user click on remove text
+                e.preventDefault(); $(".newinput"+x).remove(); x--;
+            })
+        });
+    </script>
+{% endblock %}

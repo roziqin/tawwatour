@@ -1,0 +1,111 @@
+/* -- SELECT 2*/
+.select2-container{
+    width: 100% !important;
+}
+/* -- END OF SELECT 2 */
+
+/* TABLE ORDER*/
+#table-order .input-qty{
+    padding: 0;
+    height: auto;
+}
+/* END OF TABLE ORDER*/
+
+/* FORM ORDER */
+#form-order{
+    min-height: 572px;
+}
+#note{
+    width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;
+    display: inline-block;
+    float: right;
+}
+#note:after{
+    content: "";
+    clear: both;
+    display: block;
+    width: 100%;
+}
+/* FORM ORDER */
+
+/* POS ITEM */
+#pos-items{
+    overflow-y: scroll;
+    max-height: 572px;
+    background-color: white;
+    padding:10px;
+    margin-right: 20px;
+}
+#pos-items:after{
+    content: "";
+    clear: both;
+    display: block;
+    width: 1px;
+    height: 1px;
+}
+.pos-item{
+    float: left;
+    width: 150px;
+    height: 200px;
+    text-align: center;
+    margin: 0 10px 10px 0;
+    border: thin solid #ccc;
+    position: relative;
+}
+.pos-item:hover{
+    cursor: pointer;
+    border-color: #367FA9;
+    background-color: #3C8DBC;
+    color:white;
+}
+.pos-item .badge{
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+.pos-item .item-img img{
+    width: 100px;
+    height: 100px;
+    margin: 10px auto;
+    opacity: 0.3;
+}
+.pos-item:hover .item-img img{
+    opacity: 1;
+}
+.pos-item .item-name{
+    text-align: center;
+    font-weight: bold;
+    font-size: small;
+}
+.pos-item .item-price{
+    text-align: center;
+}
+/* -- END OF POS ITEM -- */
+
+/* -- CUSTOM INPUT -- */
+.searchclear {
+    position:absolute;
+    right:5px;
+    top:0;
+    bottom:0;
+    height:14px;
+    margin:auto;
+    font-size:14px;
+    cursor:pointer;
+    color:red;
+}
+/* -- END OF CUSTOM INPUT -- */
+
+/* -- CUSTOM DATEPICKER -- */
+.datepicker table tr td.disabled,
+.datepicker table tr td.disabled:hover{
+    color: #ccc;
+}
+.datepicker table tr td.active.active{
+    border-color: #367FA9 !important;
+    background-color: #3C8DBC;
+}
+/* -- END OF CUSTOM DATEPICKER -- */

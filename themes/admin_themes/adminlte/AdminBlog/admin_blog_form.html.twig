@@ -1,0 +1,111 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Blogs
+        <small>form</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Blogs</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message is defined and message is not empty ? message : '' }}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="blog_caption">Caption <span class="text-red">*</span></label>
+                            <input type="text" class="form-control alphanumeric" id="blog_caption" name="blog_caption" placeholder="Enter Blog Caption" value="{{ blogs is defined ? blogs.caption : '' }}" required >
+                            <span class="help-block" style="color:red">*Caption is required</span>
+                        </div> 
+                        <div class="form-description">
+                            <label for="blog_category">Category Blog</label>
+                            <select class="form-control" id="blog_category" name="blog_category" placeholder="Enter Category">
+                                <option value="" readonly>Choose Category</option>
+                                {% for category in categorys %}
+                                    <option value="{{ category.id }}" {{ blogs is defined and blogs.id_blog_category == category.id ? 'selected' : '' }}>{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>       
+                        <div class="form-group">
+                            <label for="blog_description">Description</label>
+                            <textarea type="text" class="form-control textarea" id="blog_description" name="blog_description" placeholder="Enter Blog Description">{{ blogs is defined ? blogs.description : '' }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="blog_date">Date</label>
+                            <input type="text" class="form-control datepicker" id="blog_date" name="blog_date" placeholder="Entry Date" value="{{ blogs is defined ? blogs.date|date('Y-m-d') : '' }}">
+                        </div>
+                        <div class="form-group" style="display:none;">
+                            <label for="blog_user">User</label>
+                            <input type="text" class="form-control" id="blog_user" name="blog_user" value="{{GLOBAL.user.name}}">
+                        </div>
+                        {% set img_blog_temp = explode(',',blogs.img) %} 
+                        {% if blogs.img is not empty %}
+                        <div class="form-group">
+                        <label for="gallery_category">Images</label>
+                        <div class="col-md-12">
+                            {% for img_blog in img_blog_temp %}
+                                <div class="col-md-4"><img src="{{ asset('img/blogs/' ~ img_blog ,true) }}" style="width:120px"></div>
+                                <div class="col-md-2"><a href="{{ generate_url('admin_blog_image_delete',{id:blogs.id,img_name:img_blog}) }}" class="btn btn-sm btn-flat btn-danger btn-confirm" style="margin-left:5px;">HAPUS</a></div>
+                            {% endfor %}
+                        </div>
+                        </div> 
+                        {% endif %}
+                        <div class="form-group">
+                            <label for="blog_image">Image</label>
+                            <div class="input_fields_wrap">
+                                <div class="newinput">
+                                    <div class="col-md-6">
+                                        <input type="file" id="blog_image" name="blog_image[]">
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button id="add_field_button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <p class="help-block">Type: jpg/png | Max Size: 300kb | Recommended Dimension: 770x450 pixel</p>
+                            </div>               
+                        </div>               
+                    </div>
+                    <div class="box-footer">
+                        <a href="{{ generate_url('admin_blog_index') }}" class="btn btn-warning"><i class="fa fa-chevron-left"></i> Back</a>
+                        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+        $(function () {
+            //bootstrap WYSIHTML5 - text editor
+            $('.textarea').wysihtml5();
+        })
+    </script>
+    <script>
+    $(document).ready(function() {
+            var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+            var add_button      = $("#add_field_button"); //Add button ID
+            
+            
+            var x = {{ travelpass_bookings|length }}; //initlal text box count
+            $(add_button).click(function(e){ //on add input button click
+                e.preventDefault();
+                x++; //text box increment
+
+                $(wrapper).append('<div class="newinput'+x+'"><div class="col-md-6"><input type="file" id="blog_image" name="blog_image[]"></div><div class="col-md-1"><button id="remove_field" class="btn btn-danger pull-right"><i class="fa fa-trash"></i></button></div></div>'); //add input box
+            });
+            
+            $(wrapper).on("click","#remove_field", function(e){ //user click on remove text
+                e.preventDefault(); $(".newinput"+x).remove(); x--;
+            })
+        });
+    </script>
+{% endblock %}

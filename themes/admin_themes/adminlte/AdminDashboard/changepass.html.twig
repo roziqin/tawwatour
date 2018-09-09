@@ -1,0 +1,20 @@
+{% extends _layout %}
+{% block content %}
+    <div class="lockscreen-wrapper">
+        <div class="lockscreen-logo">
+            <b class="text-green">Change</b> Password
+        </div>
+        <!-- User name -->
+
+        <!-- START LOCK SCREEN ITEM -->
+        <div class="lockscreen-item">
+            {{ message }}
+        </div>
+        <center>
+            <a href="{{ generate_url('dashboard') }}" class="btn btn-warning btn-flat"><i class="fa fa-arrow-left"></i> BACK TO CASHIER</a>
+        </center>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+{% endblock %}

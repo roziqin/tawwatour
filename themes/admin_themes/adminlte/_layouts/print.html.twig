@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block top_resource %}
+        {% endblock %}    
+        <style type="text/css">
+            @media print {
+                .break-after {page-break-after: always;}
+                .btn{display: none;}
+                .table{width: 100%;border:thin solid black; border-collapse: collapse;}
+                .table td, .table th {border:1px solid black; padding: 5px;}
+                table { page-break-inside:auto }
+                tr    { page-break-inside:avoid; page-break-after:auto }
+            }
+            @page {
+                size: 21cm 29.7cm;
+                margin: 10mm 10mm 10mm 10mm; /* change the margins as you want them to be. */
+            }
+        </style>
+        <title>{{title}}</title>
+    </head>
+    <body>
+        <header>
+            {% block header %}
+            {% endblock %}
+        </header>
+        <div>
+            {% block content %}
+            {% endblock %}
+        </div>
+        <footer>
+            {% block footer %}
+            {% endblock %}
+        </footer>
+        {% block bottom_resource %}
+        {% endblock %}
+    </body>
+</html>

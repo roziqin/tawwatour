@@ -1,0 +1,65 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Price
+        <small>form</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Price</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message is defined and message is not empty ? message : '' }}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="price_name">Name <span class="text-red">*</span></label>
+                            <input type="text" class="form-control alphanumeric" id="price_name" name="price_name" placeholder="Enter Name" value="{{ prices is defined ? prices.name : '' }}" required >
+                            <span class="help-block" style="color:red">*Name is required</span>
+                        </div>        
+                        <div class="form-description">
+                            <label for="price_description">Description</label>
+                            <textarea class="textarea" placeholder="Enter Price Description" name="price_description"
+                                style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ prices is defined ? prices.description : '' }}</textarea>
+                        </div>         
+                        <div class="form-description">
+                            <label for="price_price">Price</label>
+                            <input type="text" class="form-control numeric" id="price_price" name="price_price" placeholder="Enter Price" value="{{ prices is defined ? prices.price : '' }}">
+                        </div>
+                        <div class="form-group">
+                            <br><label for="show_public">Show Public</label><br>
+                            <input type="checkbox" {{ prices is defined and prices.show_public == 0 ? 'checked' : '' }} name="show_public" value="on">
+                        </div>
+                        {#<div class="form-group">
+                            <label for="price_image">Image</label>
+                            <input type="file" id="price_image" name="price_image">
+                            <p class="help-block">Type: jpg/png | Max Size: 300kb</p>
+                        </div>#}
+                    </div>
+                    <div class="box-footer">
+                        <a href="{{ generate_url('admin_price') }}" class="btn btn-warning"><i class="fa fa-chevron-left"></i> Back</a>
+                        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+        $(function () {
+            //bootstrap WYSIHTML5 - text editor
+            $('.textarea').wysihtml5();
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_flat-blue',
+                radioClass: 'iradio_flat'
+            });
+        })
+    </script>
+{% endblock %}

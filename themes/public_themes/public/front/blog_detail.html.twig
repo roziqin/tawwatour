@@ -1,0 +1,125 @@
+{% extends _layout %}
+{% block content %}
+<header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{ asset('img/',true)}}header-mini2.jpg"
+  data-background-mobile="{{ asset('img/',true)}}header-mini2.jpg" class="ct-mediaSection">
+  <div class="ct-breadcrumbs">
+    <ul class="list-inline list-unstyled text-uppercase">
+      <li>
+        <a href="{{ base_url() }}">
+          <i class="fa fa-home"></i>
+        </a>
+        <i class="fa fa-angle-right"></i>Blog</li>
+    </ul>
+  </div>
+</header>
+<section itemscope itemtype="http://schema.org/Blog" class="ct-u-paddingBoth80 ct-blog ct-blog-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="ct-sidebar ct-sidebar--grey">
+          <div class="row">
+            <div class="col-sm-6 col-md-12">
+              <div class="widget">
+                <div class="widget-inner">
+                  <h6 class="text-uppercase ct-fw-700 widget-title"> Kategori</h6>
+                  <ul class="list-unstyled">
+                    {% for blog_category in blog_categories %}
+                    <li>
+                      <a href="#" class="text-capitalize">
+                        <i class="fa fa-long-arrow-right"></i>{{ blog_category.name }}</a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" class="ct-article ct-fw-600">
+          <div class="ct-article-media">
+            {% set img_slide_temp = explode(',',blogs.img) %} 
+            {% if img_slide_temp|length > 1 %}
+            <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="6000"
+              data-draggable="true" data-dots="true" data-touchMove="false" data-arrows="false" data-items="1" class="ct-slick ct-js-slick ct-slick--arrowsNoBorder">
+              {% for img_slide in img_slide_temp %}
+              <div class="item">
+                <img src="{{ asset('img/blogs/',true)}}{{img_slide}}" alt="media">
+              </div>
+              {% endfor %}
+            </div>
+            {% else %}
+            <a href="{{ base_url() }}blog/{{ blogs.alias }}" itemprop="url">
+              <img src="{{ asset('img/blogs/',true)}}{{blogs.img}}" alt="Blog Post" itemprop="image">
+            </a>
+            {% endif %}
+          </div>
+          <div class="ct-article-body">
+            <div class="ct-u-displayTableVertical ct-u-displayTableMobile ct-u-marginBottom20">
+              <div class="ct-u-displayTableCell">
+                <div class="ct-article-title">
+                  <h5 class="text-uppercase ct-fw-700">{{blogs.caption}}</h5>
+                </div>
+                <ul class="ct-article-meta list-unstyled list-inline">
+                  <li itemprop="dateCreated" class="ct-article-date">
+                    <i class="fa fa-calendar"></i>{{tanggal_indo(blogs.date|date('Y-m-d'))}}</li>
+                </ul>
+              </div>
+            </div>
+            <div itemprop="text" class="ct-article-description ct-fw-400 ct-u-paddingBottom10 ct-u-marginBottom10">
+              <p>{{blogs.description}}</p>
+            </div>
+            <div class="ct-article-tags ct-u-marginTop10">
+              <ul class="list-unstyled">
+                <li>
+                  <i class="fa fa-tag"></i>
+                  <span class="ct-fw-700">Tag:</span>
+                  <a href="#"> Safety,</a>
+                  <a href="#"> Travel,</a>
+                  <a href="#"> Lions,</a>
+                  <a href="#"> South Africa,</a>
+                  <a href="#"> Hot,</a>
+                  <a href="#"> Latest News</a>
+                  &nbsp;&nbsp;
+                  <i class="fa fa-folder"></i>
+                  <span class="ct-fw-700">Kategori:</span>
+                  <a href="#"> {{blogs.blog_category.name}}</a>
+                </li>
+                <li>
+              </ul>
+            </div>
+            <div class="sharethis-inline-share-buttons"></div>
+          </div>
+        </article>
+        <div class="ct-divider--greyBig ct-u-marginTop10 ct-u-marginBottom10"></div>
+        <h5 class="text-uppercase ct-fw-700 ct-u-marginBottom20">
+          <script id="dsq-count-scr" src="//tawwatour.disqus.com/count.js" async></script>
+        </h5>
+        <!-- <span class="ct-u-marginBottom20 ct-u-block">See what other people say about this article.</span> -->
+        <div class="ct-comments ct-comments--style2">
+          <div id="disqus_thread"></div>
+          <script>
+
+            var disqus_config = function () {
+              this.page.url = '{{ base_url() }}blog/{{ blogs.alias }}';
+              this.page.identifier = '{{ blogs.alias }}';
+            };
+
+            (function () { // DON'T EDIT BELOW THIS LINE
+              var d = document, s = d.createElement('script');
+              s.src = 'https://tawwatour.disqus.com/embed.js';
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+            })();
+          </script>
+          <noscript>Please enable JavaScript to view the
+            <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          </noscript>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Blog
+        <small>list of all blog</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Blog</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message }}
+    <div class="box">
+        <div class="box-header">
+            <a href="{{ generate_url('admin_blog_form') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> New Blog</a>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hovered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Caption</th>
+                            <th>Blog Category</th>
+                            <th style="width:300px;">Description</th>
+                            <th style="width:100px;">Date</th>
+                            <th>User</th>
+                            <th style="width:200px;">Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for blog in blogs %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ blog.caption }}</td>
+                                <td>{{ blog.blog_category.name }}</td>
+                                <td>{{ blog.description }}</td>
+                                <td>{{ blog.date|date('Y-m-d')}}</td>
+                                <td>{{ blog.user }}</td>
+                                <td>
+                                    <center>
+                                    {% set blogs = explode(',',blog.img) %} 
+                                    {% if blog.img is not empty %}
+                                        {% for porto in blogs %}
+                                                <img src="{{ asset('img/blogs/' ~ porto ,true) }}" style="width:50px">
+                                        {% endfor %}
+                                        {% else %}
+                                            <img src="{{ asset('img/blogs/default.png',true) }}" style="width:50px">
+                                    {% endif %}
+                                    </center>
+                                <td>
+                                    <a href="{{ generate_url('admin_blog_form') }}?mode=edit&id={{blog.id}}" class="btn btn-sm btn-warning" style="margin-left:5px;">edit</a> 
+                                    <a href="{{ generate_url('admin_blog_delete',{id:blog.id}) }}" class="btn btn-sm btn-danger btn-confirm" style="margin-left:5px;">delete</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="8"><div class="alert alert-danger">No Data</div></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+    </script>
+{% endblock %}

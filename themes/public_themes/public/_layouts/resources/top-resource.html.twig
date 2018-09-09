@@ -1,0 +1,17 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+<meta name="description" content="{{ meta_desc is defined ? metadesc : 'Untitled' }}">
+<meta name="author" content="{{ meta_author is defined ? meta_author : 'Untitled' }}">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>{{ title is defined ? title : 'Untitled' }}</title>
+
+<link rel="shortcut icon" href="{{ asset('img/', true) }}{{ getSettingValue('company_logo').value }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/motive/motive-tourist.css') }}">
+<!--[if lt IE 9]>
+    <script src="{{ asset('js/html5shiv.min.js') }}"></script>
+    <script src="{{ asset('js/respond.min.js') }}"></script><![endif]-->
+<script src="{{ asset('js/modernizr.custom.js') }}">
+</script>

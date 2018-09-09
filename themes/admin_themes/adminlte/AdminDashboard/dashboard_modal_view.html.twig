@@ -1,0 +1,28 @@
+<br>
+<div class="row">
+  <div class="col-md-12">
+  {% for news in data %}
+    {% set explode_news = explode(',',news.user_ids)  %}
+    {% for id_user in explode_news %}
+      {% if id_user == userId %}
+        <div class="col-md-12" id="result_modal_view">
+          <div class="box box-solid bg-light-blue-gradient">
+              <div class="box-header with-border" style="background:rgba(0, 84, 133, 0.28);">
+                <h3 class="box-title">{{ news.title }}</h3>
+              </div>
+          </div>
+          <div class="box box-solid">
+              <div class="box-body" style="overflow-y: scroll; overflow-x: hidden;height:150px;">
+                <h5 class="box-title">Publish by : {{ news.users.name }} on {{ news.created_at|date('d-m-Y H:i:s') }}</h5>
+                <p>{{ news.content }}</p>
+              </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  </div>
+</div>
+<div class="modal-footer">                   
+  <button type="button" onClick="window.location.reload()" class="btn btn-flat btn-warning" data-dismiss="modal">Back</button>                        
+</div>

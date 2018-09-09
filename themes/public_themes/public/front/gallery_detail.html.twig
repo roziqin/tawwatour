@@ -1,0 +1,66 @@
+{% extends _layout %}
+{% block header %}
+  {% set fixed_header = true %}
+  {{ parent() }}
+{% endblock %}
+{% block content %}
+<!-- section PROJECTS-->
+<link rel="stylesheet" href="{{ asset('css/demos/demo-business-consulting.css') }}">
+<link rel="stylesheet" href="{{ asset('css/demos/demo-photography.css') }}">
+<div role="main" class="main" id="main">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 center">
+          <h1 class="mt-xlg mb-sm pt-md">{{galleries.caption}}</h1>
+          <hr class="custom-divider" style="background: transparent url({{ asset('img/custom-divider-1.png',true) }}) no-repeat center center;">
+        </div>
+      </div>
+    </div>
+    <div class="container p-none">
+        <div id="photographyLightbox" class="mfp-hide">
+            <div class="thumb-gallery">
+                <div class="owl-carousel owl-theme manual thumb-gallery-detail" id="thumbGalleryDetail">
+                {% for gallery in explode(",",galleries.img) %}
+                    <div>
+                        <span class="img-thumbnail">
+                            <img alt="" src="{{ asset('img/gallery/',true)}}{{gallery}}" class="img-responsive">
+                        </span>
+                    </div>
+                {% endfor %}
+                </div>
+                <div class="owl-carousel owl-theme manual thumb-gallery-thumbs show-thumbs mt" id="thumbGalleryThumbs">
+                {% for gallery in explode(",",galleries.img) %}
+                    <div>
+                        <span class="img-thumbnail cur-pointer">
+                            <img alt="" src="{{ asset('img/gallery/',true)}}{{gallery}}">
+                        </span>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <ul id="portfolioGrid" class="p-none">
+            <span class="grid-sizer col-sm-4 col-md-4"></span>
+            {% for gallery in explode(",",galleries.img) %}
+            <li class="col-sm-4 col-md-4 isotope-item p-none">
+                <div class="portfolio-grid-item">
+                    <a href="#photographyLightbox" class="text-decoration-none popup-with-move-anim">
+                        <span class="thumb-info">
+                            <span class="thumb-info-wrapper size-2 m-none">
+                                <span class="thumb-info-background" style="background-image: url('{{ asset('img/gallery/',true)}}{{gallery}}');"></span>
+                                <span class="thumb-info-plus"></span>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+	</script>
+{% endblock %}

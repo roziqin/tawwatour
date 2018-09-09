@@ -1,0 +1,94 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Information
+        <small>form</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Information</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message is defined and message is not empty ? message : '' }}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="company_name">Company Name</label>
+                            <textarea type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter Company Name">{{ company_name is defined ? company_name.value : '' }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="company_logo">Company Logo</label>
+                            <p><strong>Old :</strong></p><br>
+                            {{ company_logo is defined ? '<br><img src="' ~ asset('img/'~company_logo.value,true) ~ '" width="300" />' : '' }}
+                            <p><strong>New :</strong></p><br><img id="logo" src="#" style="height:100px;width:150;"></img>
+                            <input type="file" id="company_logo" name="company_logo">
+                            <p class="help-block">Type: jpg/png | Max Size: 300kb | Recommended Dimension: width 300 pixel</p>
+                        </div> 
+                        <div class="form-group">
+                            <label for="company_address">Company Address</label>
+                            <textarea type="text" class="form-control" id="company_address" name="company_address" placeholder="Enter Company Address">{{ company_address is defined ? company_address.value : '' }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="company_phone">Company Phone</label>
+                            <input type="number" class="form-control numeric" id="company_phone" name="company_phone" placeholder="Enter Company Phone" value="{{ company_phone is defined ? company_phone.value : '' }}"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="company_email">Company Email</label>
+                            <input type="email" class="form-control" id="company_email" name="company_email" placeholder="Enter Company Email" value="{{ company_email is defined ? company_email.value : '' }}"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="company_url_fb">Company URL Facebook</label>
+                            <input type="text" class="form-control" id="company_url_fb" name="company_url_fb" placeholder="Enter Company URL Facebook" value="{{ company_url_fb is defined ? company_url_fb.value : '' }}"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="company_url_twitter">Company URL Twitter</label>
+                            <input type="text" class="form-control" id="company_url_twitter" name="company_url_twitter" placeholder="Enter Company URL Twitter" value="{{ company_url_twitter is defined ? company_url_twitter.value : '' }}"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="company_url_ig">Company URL Instagram</label>
+                            <input type="text" class="form-control" id="company_url_ig" name="company_url_ig" placeholder="Enter Company URL Instagram" value="{{ company_url_ig is defined ? company_url_ig.value : '' }}"></input>
+                        </div>
+                        <div class="form-group hidden">
+                            <label for="company_favicon">Company Favicon</label>
+                            <input type="text" class="form-control" id="company_favicon" name="company_favicon" placeholder="Enter Company Favicon" value="{{ company_favicon is defined ? company_favicon.value : '' }}"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="company_meta_keyword">Company Meta Keyword</label>
+                            <input type="text" class="form-control" id="company_meta_keyword" name="company_meta_keyword" placeholder="Enter Company Meta Keyword" value="{{ company_meta_keyword is defined ? company_meta_keyword.value : '' }}"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="company_meta_description">Company Meta Description</label>
+                            <textarea type="text" class="form-control" id="company_meta_description" name="company_meta_description" placeholder="Enter Company Meta Description">{{ company_meta_description is defined ? company_meta_description.value : '' }}</textarea>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button href="{{ generate_url('admin_information') }}" class="btn btn-success pull-right"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function (e) {
+                    $('#logo').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#company_logo").change(function(){
+            readURL(this);
+        });
+    </script>
+{% endblock %}

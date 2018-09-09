@@ -1,0 +1,76 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Tours
+        <small>list of all tours</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        Tours
+        <li class="active">tours</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message }}
+    <div class="box">
+        <div class="box-header">
+            <a href="{{ generate_url('admin_tours_form') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> New tours</a>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-responsive table-bordered table-hovered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th style="width:300px;">Description Summary</th>
+                            <th>Featured</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for tours in tourss %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ tours.name }}</td>
+                                <td>{{ tours.tour_category.name }}</td>
+                                <td>{{ tours.description_summary }}</td>
+                                <td class="text-center">
+                                    {% if tours.featured == 1 %}
+                                        <i class="fa fa-check" style="color:green"></i>
+                                    {% else %}
+                                        <i class="fa fa-times" style="color:red"></i>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <center>
+                                        {% if tourss and tours.img is not empty %}
+                                            <img src="{{ asset('img/tours/' ~ tours.img ,true) }}"style="width:50px">
+                                        {% else %}
+                                            <img src="{{ asset('img/tours/default.png',true) }}" style="width:50px">
+                                        {% endif %}
+                                    </center>
+                                <td>
+                                    <a href="{{ generate_url('admin_tours_detail',{id:tours.id}) }}" class="btn btn-sm btn-success">detail</a> 
+                                    <a href="{{ generate_url('admin_tours_form') }}?mode=edit&id={{tours.id}}" class="btn btn-sm btn-warning" style="margin-left:5px;">edit</a> 
+                                    <a href="{{ generate_url('admin_tours_delete',{id:tours.id}) }}" class="btn btn-sm btn-danger btn-confirm" style="margin-left:5px;">delete</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5"><div class="alert alert-danger">No Data</div></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+    </script>
+{% endblock %}

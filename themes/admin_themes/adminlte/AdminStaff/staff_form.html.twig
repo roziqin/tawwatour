@@ -1,0 +1,84 @@
+{% extends _layout %}
+{% block content_header %}
+    <h1>
+        Staff
+        <small>form</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Staff</li>
+    </ol>
+{% endblock %}
+{% block content %}
+    {{ message is defined and message is not empty ? message : '' }}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="staff_name">Name <span class="text-red">*</span></label>
+                            <input type="text" class="form-control alphanumeric" id="staff_name" name="staff_name" placeholder="Enter Staff Name" value="{{ staffs is defined ? staffs.name : '' }}" required >
+                            <span class="help-block" style="color:red">*Name is required</span>
+                        </div>   
+                        <div class="form-group">
+                            <label for="staff_position">Position <span class="text-red">*</span></label>
+                            <input type="text" class="form-control alphanumeric" id="staff_position" name="staff_position" placeholder="Enter Staff Position" value="{{ staffs is defined ? staffs.position : '' }}" required >
+                            <span class="help-block" style="color:red">*Position is required</span>
+                        </div>   
+                        <div class="form-group">
+                            <label for="staff_description">Description</label>
+                            <input type="text" class="form-control alphanumeric" id="staff_description" name="staff_description" placeholder="Enter Staff Description" value="{{ staffs is defined ? staffs.description : '' }}">
+                        </div> 
+                        <div class="form-group">
+                            <label for="staff_image">Image</label>
+                            <input type="file" id="staff_image" name="staff_image">
+                            <p class="help-block">Type: jpg/png | Max Size: 300kb | Recommended Dimension: 370x320 pixel</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="staff_sosmed">Sosmed</label>
+                            <div class="form-group">
+                                <label for="staff_ig" class="col-sm-2 control-label">Instagram</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="staff_ig" name="staff_ig" placeholder="Enter Staff Username Instagram"  value="{{ staffs is defined ? socmed.0.ig : '' }}">
+                                </div>
+                            </div><br>
+                            <div class="form-group">
+                                <label for="staff_fb" class="col-sm-2 control-label">Facebook</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="staff_fb" name="staff_fb" placeholder="Enter Staff Username Facebook"  value="{{ staffs is defined ? socmed.0.fb : '' }}">
+                                </div>
+                            </div><br>
+                            <div class="form-group">
+                                <label for="staff_tw" class="col-sm-2 control-label">Twitter</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="staff_tw" name="staff_tw" placeholder="Enter Staff Username Twitter"  value="{{ staffs is defined ? socmed.0.tw : '' }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <br><label for="show_public">Show Public</label><br>
+                                <input type="checkbox" {{ staffs is defined and staffs.top == 1 ? 'checked' : '' }} name="top_staff" value="on">
+                            </div>                             
+                        </div>                
+                    </div>
+                    <div class="box-footer">
+                        <a href="{{ generate_url('admin_staff_index') }}" class="btn btn-warning"><i class="fa fa-chevron-left"></i> Back</a>
+                        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_flat-blue',
+                radioClass: 'iradio_flat'
+            });
+        })
+    </script>
+{% endblock %}

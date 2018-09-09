@@ -1,0 +1,13 @@
+{% extends _layout %}
+{% block content %}
+    <div class="row" style="overflow:hidden">
+        <div class="col-md-12">
+              <h1>Welcome {{GLOBAL.user.name}}!</h1>
+        </div>
+    </div>    
+{% endblock %}
+{% block bottom_resource %}
+    {{parent()}}
+    <script>
+    </script>
+{% endblock %}
