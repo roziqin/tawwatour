@@ -273,6 +273,7 @@
   -webkit-box-shadow: 0px 3px 0px 0px #3d82c8;
   -moz-box-shadow: 0px 3px 0px 0px #3d82c8;
   box-shadow: 0px 3px 0px 0px #3d82c8;
+  min-height: 260px;
 }
 .ct-productBox .ct-productBox-DescriptionInner a {
   color: #498bcf;

@@ -9,7 +9,10 @@
 <script src="{{ asset('js/isotope/init.js') }}"></script>
 <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5af14f92e12a39001287de44&product=inline-share-buttons"></script>
 <script>
-    $(document).on('click', '.btn-navigasi', function () {
+    $(document).on('click', '.btn-navigasi', function (e) {
+        $("a.btn-navigasi").removeClass("active");
+        $(this).addClass("active");
+        e.preventDefault();
         var data = $(this).attr("data-class");
         $('.tab-content').hide();
         if(data == 'ringkasan'){

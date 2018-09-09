@@ -1,6 +1,6 @@
 {% extends _layout %} {% block content %}
 <header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{ asset('img/',true)}}header-mini3.jpg"
-  data-background-mobile="{{ asset('img/',true)}}header-mini3.jpg" class="ct-mediaSection">
+  data-background-mobile="{{ asset('img/',true)}}header-mini3.jpg" class="ct-mediaSection custom">
   <div class="ct-breadcrumbs">
     <ul class="list-inline list-unstyled text-uppercase">
       <li>
@@ -26,11 +26,11 @@
       </div>
     </div>
     <div class="col-md-9">
-      <div class="ct-js-gallery ct-gallery ct-gallery--product">
+      <div class="ct-js-gallery ct-gallery ct-gallery--product list-tour">
         {% for tour in tours %}
         <div class="ct-gallery-item {{ tour.alias_category|replace({'_': " "}) }}">
           <div class="ct-productBox ct-productBox--moreInfo ct-productBox--moreInfo-inline">
-            <h4 class="h4 ct-u-marginBottom10">{{tour.name}}</h4>
+            <h4 class="h4 ct-u-marginBottom10 dp-desktop">{{tour.name}}</h4>
             <div class="ct-productBox-Description">
               <div class="ct-productBox-image">
                 <div class="ct-productBox-imageContainer">
@@ -39,19 +39,20 @@
                   </a>
                 </div>
               </div>
+              <h4 class="h4 ct-u-marginBottom10 dp-mobile">{{tour.name}}</h4>
               <div class="ct-productBox-Meta text-center">
                 <div class="ct-productBox-deliveryInformation">
                   <div class="ct-u-displayTableRow">
                     <div class="ct-productBox-MetaItem">
-                      <span class="ct-u-colorMotive ct-fw-700 text-uppercase">Paket</span>
-                      <span class="h5 text-uppercase">{{ tour.name_category }}</span>
+                      <span class="ct-u-colorMotive ct-fw-700">Paket</span>
+                      <span class="h5">{{ tour.name_category }}</span>
                     </div>
                   </div>
                 </div><div class="ct-productBox-deliveryInformation">
                   <div class="ct-u-displayTableRow">
                     <div class="ct-productBox-MetaItem">
-                      <span class="ct-u-colorMotive ct-fw-700 text-uppercase">Harga</span>
-                      <span class="h5 text-uppercase">HUBUNGI KAMI</span>
+                      <span class="ct-u-colorMotive ct-fw-700">Harga</span>
+                      <span class="h5">Hubungi Kami</span>
                     </div>
                   </div>
                 </div>

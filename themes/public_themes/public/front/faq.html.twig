@@ -1,7 +1,7 @@
 {% extends _layout %} 
 {% block content %}
 <header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{ asset('img/',true)}}header-mini2.jpg"
-    data-background-mobile="{{ asset('img/',true)}}header-mini2.jpg" class="ct-mediaSection">
+    data-background-mobile="{{ asset('img/',true)}}header-mini2.jpg" class="ct-mediaSection custom">
     <div class="ct-breadcrumbs">
         <ul class="list-inline list-unstyled text-uppercase">
             <li>
@@ -13,7 +13,7 @@
     </div>
 </header>
 <section class="ct-u-paddingBoth100">
-    <div class="container">
+    <div class="container ">
         <div class="row">
             
             <div class="col-sm-9">
@@ -59,20 +59,33 @@
                 </div>
             </div>
             <div class="col-sm-3">
-                <div class="widget widget-filter ct-js-gallery-filters" data-group="continent">
-                    <div class="widget-inner">
-                        <h6 class="ct-fw-600 ct-u-marginBottom20 text-capitalize">BUTUH BANTUAN ?</h6>
-                        <img src="{{ asset('img/',true)}}call-center.jpg" alt="Product">
-                        <a href="https://api.whatsapp.com/send?phone={{ getSettingValue('company_whatsapp').value }}" class="btn btn-success btn-sm text-uppercase ct-u-marginTop20">
-                            <i class="fa fa-whatsapp"></i>
-                            <span>Via Whatsapp</span>
-                        </a>
-                        <a href="tel:{{ getSettingValue('company_phone').value }}" class="btn btn-primary btn-sm text-uppercase ct-u-marginTop20">
-                            <i class="fa fa-phone"></i>
-                            <span>Via Telepon</span>
-                        </a>
-                
+                <div class="ct-sidebar ct-sidebar--search">
+                    <div class="widget-bantuan widget widget-filter ct-js-gallery-filters" data-group="continent">
+                        <div class="widget-inner">
+                            <h6 class="ct-fw-600 ct-u-marginBottom20 text-capitalize">BUTUH BANTUAN ?</h6>
+                            <img src="{{ asset('img/',true)}}call-center.jpg" alt="Product">
+                            <a href="https://api.whatsapp.com/send?phone={{ getSettingValue('company_whatsapp').value }}" class="btn btn-success btn-sm text-uppercase ct-u-marginTop20">
+                                <i class="fa fa-whatsapp"></i>
+                                <span>Via Whatsapp</span>
+                            </a>
+                            <a href="tel:{{ getSettingValue('company_phone').value }}" class="btn btn-primary btn-sm text-uppercase ct-u-marginTop20">
+                                <i class="fa fa-phone"></i>
+                                <span>Via Telepon</span>
+                            </a>
+                    
+                        </div>
                     </div>
+                </div>
+
+                <div class="cs-mobile">
+                  <div class="box-mobile">
+                    <a target="_blank" href="https://api.whatsapp.com/send?phone={{ getSettingValue('company_whatsapp').value }}" class="btn-wa">
+                      <i class="fa fa-whatsapp"></i>
+                    </a>
+                    <a href="tel:{{ getSettingValue('company_phone').value }}" class="btn-phone">
+                      <i class="fa fa-phone"></i>
+                    </a>
+                  </div>
                 </div>
             </div>
         </div>

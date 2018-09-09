@@ -6,10 +6,13 @@
         data-draggable="true" data-touchMove="false" data-arrows="true" data-items="1" class="ct-slick ct-js-slick">
         {% for slider in sliders %}
         <div data-bg="{{ asset('img/slides/',true)}}{{slider.img}}" class="item">
+        <!--<div class="item">-->
           <div class="ct-slick-inner">
             <div class="ct-slick-content">
               <div class="container">
                 <div class="row">
+                  <div style="padding-bottom: 50%;"></div>
+                  <!--
                   <div class="col-md-7"></div>
                   <div class="col-md-5">
                     <div class="col-md-7">
@@ -29,6 +32,7 @@
                       {% endif %}
                     </div>
                   </div>
+                  -->
                 </div>
               </div>
             </div>
@@ -46,8 +50,8 @@
         </div>
         <div class="row">
           {% for tour in tours %}
-          <div class="col-md-6">
-            <div class="ct-productBox ct-u-marginBottom40">
+          <div class="col-xs-6 custom-box">
+            <div class="ct-productBox ct-u-marginBottom40 box-paket">
               <div class="ct-productBox-image">
                 <div class="ct-productBox-imageContainer">
                   <a href="{{ base_url() }}tour/{{ tour.alias_parent }}/{{ tour.alias_category }}/{{ tour.alias }}">
@@ -58,10 +62,11 @@
               <div class="ct-productBox-Description text-center">
                 <div class="ct-productBox-DescriptionInner text-center">
                   <a href="{{ base_url() }}tour/{{ tour.alias_parent }}/{{ tour.alias_category }}/{{ tour.alias }}">
-                    <h5 class="text-uppercase ct-u-marginBottom20 ct-fw-700">{{ tour.name }}</h5>
+                    <h5 class="text-uppercase  ct-fw-700">{{ tour.name }}</h5>
                   </a>
                 </div>
                 <div class="ct-productBox-Meta text-center">
+                  <!--
                   <div class="ct-productBox-deliveryInformation text-center">
                     <div class="ct-u-displayTableRow">
                       <div class="ct-productBox-MetaItem">
@@ -74,20 +79,23 @@
                       </div>
                     </div>
                   </div>
-                  <a href="{{ base_url() }}tour/{{ tour.alias_parent }}/{{ tour.alias_category }}/{{ tour.alias }}" class="btn btn-primary btn-xs text-uppercase ct-u-marginBoth10 col-md-12">LIHAT DETIL</a>
-                  <a target="_blank" href="https://api.whatsapp.com/send?phone={{ getSettingValue('company_whatsapp').value }}" class="btn btn-primary btn-xs text-uppercase ct-u-marginBoth10 col-md-12">BOOKING</a>
+                  -->
+                  <a href="{{ base_url() }}tour/{{ tour.alias_parent }}/{{ tour.alias_category }}/{{ tour.alias }}" class="btn btn-primary btn-xs text-uppercase ct-u-marginBoth10 col-md-12 btn-paket">LIHAT DETAIL</a>
+                  <a target="_blank" href="https://api.whatsapp.com/send?phone={{ getSettingValue('company_whatsapp').value }}" class="btn btn-primary btn-xs text-uppercase ct-u-marginBoth10 col-md-12 btn-paket">BOOKING</a>
                   <div class="clearfix"></div>
                 </div>
               </div>
             </div>
           </div>
           {% endfor %}
+          <div class="clear"></div>
           <div class="col-md-12 ct-u-paddingBottom20">
-            <a href="{{ base_url() }}tour" class="btn btn-lg btn-default text-uppercase col-md-12">LIHAT DAFTAR SEMUA PAKET</a>
+            <a href="{{ base_url() }}tour" class="btn btn-lg btn-default text-uppercase col-md-12 btn-all">LIHAT DAFTAR SEMUA PAKET</a>
           </div>
         </div>
       </div>
     </section>
+    <!--
     <section class="ct-u-paddingBoth30">
       <div class="container">
         <div class="row">
@@ -135,7 +143,8 @@
         </div>
       </div>
     </section>
-    <section class="ct-u-paddingBottom20">
+    -->
+    <section class="ct-u-paddingBottom20 ct-u-paddingTop50">
       <div class="container">
         <div class="row">
           <div class="ct-heading--striped text-uppercase ct-u-marginBottom50">
@@ -152,6 +161,7 @@
         </div>
       </div>
     </section>
+    <!--
     <section class="ct-u-backgroundMotive ct-u-colorWhite ct-u-paddingBoth20">
       <div class="container ct-u-relative ct-u-paddingTop20">
         <div class="row">
@@ -237,4 +247,5 @@
         </div>
       </div>
     </section>
+    -->
 {% endblock %}

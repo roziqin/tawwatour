@@ -59,9 +59,9 @@ $query_builder = TRUE;
 
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'tawwatou_develop';
-$db['default']['password'] = 'bismillahbarokah2018';
-$db['default']['database'] = 'tawwatou_website';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
+$db['default']['database'] = 'tawwatour';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
