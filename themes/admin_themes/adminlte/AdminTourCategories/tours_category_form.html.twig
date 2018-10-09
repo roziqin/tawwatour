@@ -22,6 +22,13 @@
                             <input type="text" class="form-control alphanumeric" id="tours_category_name" name="tours_category_name" placeholder="Enter tours Category Name" value="{{ category is defined ? category.name : '' }}">
                         </div>
                         <div class="form-group">
+                            <label for="tours_category_status">Status</label>
+                            <select class="form-control" id="tours_category_status" name="tours_category_status">
+                                <option value="parent">Parent</option>
+                                <option value="child">Chlid</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="tours_category_name">Description</label>
                             <input type="text" class="form-control" id="tours_category_description" name="tours_category_description" placeholder="Enter tours Category Description" value="{{ category is defined ? category.description : '' }}">
                         </div>   

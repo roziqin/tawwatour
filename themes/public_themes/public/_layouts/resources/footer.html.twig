@@ -1,4 +1,4 @@
-<footer class="ct-u-backgroundMotive ct-u-colorWhite ct-u-paddingBoth20">
+<footer class="ct-u-backgroundMotive ct-u-colorWhite ct-u-paddingTop40 ct-u-paddingBottom20">
 <div class="ct-prefooter">
     <div class="container">
         <div class="ct-prefooter-inner ct-u-relative">
@@ -9,6 +9,33 @@
     </div>
 </div>
 <div class="container">
+    <div class="row box-nav-footer">
+        <div class="col-xs-12 col-sm-4 box-1">
+            <img src="{{ asset('images/logo-tawwa-1.png') }}" class="logo-bottom">
+            <p class="ct-u-paddingTop20">Tawwa Tour merupakan trip organizer yang memiliki beberapa paket wisata yang meng-cover area Malang dan Batu serta Bromo</p>
+        </div>
+        <div class="col-xs-12 col-sm-4 box-2">
+            <h4 class="ct-u-paddingBottom20">BLOG</h4>
+            {% for blog in blogs %}
+            <a href="{{ base_url() }}blog/{{ blog.alias }}" itemprop="url">
+                {% if blog.img != null %}
+                    <img src="{{ asset('img/blogs/',true)}}{{explode(',',blog.img)[0]}}" alt="Blog Post" itemprop="image" class="img-blog">
+                {% endif %}
+                <p class="">{{blog.caption}}</p>
+            </a>
+
+            {% endfor %}
+        </div>
+        <div class="col-xs-12 col-sm-4 box-3">
+            <h4 class="ct-u-paddingBottom20">HUBUNGI KAMI</h4>
+            <p>Alamat : Jl. Simpang Gajayana 577F</p>
+            <p>Telepon : 081359990157</p>
+            <p class="ct-u-paddingBottom10">Email : info@tawwatour.com</p>
+            <a href="" class="icon icon-facebook"></a>
+            <a href="" class="icon icon-twitter"></a>
+            <a href="" class="icon icon-instagram"></a>
+        </div>
+    </div>
     <div class="ct-postfooter text-center">
         <span>&#169; 2018 TAWWA TRIP ORGANIZER | Powered by PT. KKS | Developed by <a href="https://xenon.id">XENON.ID</a></span>
     </div>

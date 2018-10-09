@@ -15,8 +15,12 @@ array(
         'class' => 'front/blog/$1'
     ),
     'tour' => array(
+        'route' => 'tour',
+        'class' => 'front/tour'
+    ),
+    'tours' => array(
         'route' => 'tour/{alias}',
-        'class' => 'front/tour/$1'
+        'class' => 'front/tours/$1'
     ),
     'about' => array(
         'route' => 'about',

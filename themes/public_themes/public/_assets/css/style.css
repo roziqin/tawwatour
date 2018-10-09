@@ -6835,10 +6835,15 @@ button {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0');
-  src: url('//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0') format('embedded-opentype'), url('//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0') format('woff2'), url('//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0') format('woff'), url('//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0') format('truetype'), url('//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular') format('svg');
+  src: url('../fonts/fontawesome/fonts/fontawesome-webfont.eot?v=4.3.0');
+  src: url('../fonts/fontawesome/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0') format('embedded-opentype'), 
+        url('../fonts/fontawesome/fonts/fontawesome-webfont.woff2?v=4.3.0') format('woff2'), 
+        url('../fonts/fontawesome/fonts/fontawesome-webfont.woff?v=4.3.0') format('woff'), 
+        url('../fonts/fontawesome/fonts/fontawesome-webfont.ttf?v=4.3.0') format('truetype'), 
+        url('../fonts/fontawesome/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
+  font-display: fallback;
 }
 .fa {
   display: inline-block;
@@ -12025,7 +12030,7 @@ footer .ct-postfooter {
 }
 @media (min-width: 992px) {
   .navbar-wrapper {
-    height: 148px;
+    height: 100px;
   }
 }
 @media (max-width: 992px) {

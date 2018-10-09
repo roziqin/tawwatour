@@ -8,12 +8,25 @@ class Front extends XE_PublicController {
         $company_name = getSettingValue('company_name');
         $this->company_name = $company_name ? $company_name->value : $this->config->item('default_title');
         $data['categories'] = MDTourCategory::all(array('conditions'=>"deleted = 0 AND status = 'child'",'order'=>'id'));
+        $company_meta_description = getSettingValue('company_meta_description');
+        $data['blogs'] = MDBlog::all(array('conditions'=>'deleted = 0','order'=>'caption','limit'=>'4'));
+        foreach($data['blogs'] as $key=> $blogs)
+        {
+            $longcaracter[$key] = strlen($blogs->description);
+            if($longcaracter[$key] <= 100){                
+                $data['description'][$key] = $blogs->description;
+            }elseif ($longcaracter[$key] > 100){
+                $data['description'][$key] = substr($blogs->description, 0, 100).'...';
+            }
+        }
+        $this->company_meta_description = $company_meta_description->value;
         $this->viewData($data);
     }
 
     public function index()
     {
         $data['title'] = $this->company_name;
+        $data['meta_desc'] = $this->company_meta_description;
         $data['sliders'] = MDSliders::all(array('conditions'=>'deleted = 0','order'=>'id'));
         $data['quotes'] = MDQuote::all(array('conditions'=>'deleted = 0','order'=>'id'));
         $join = array('LEFT JOIN nanktour_tour_category c ON(nanktour_tour.id_tour_category = c.id)',
@@ -41,10 +54,29 @@ class Front extends XE_PublicController {
         $this->displayView('index');
     }
 
-    public function tour($alias)
+    public function tour()
+    {
+        $data['title'] = $this->company_name . ' - Tour';
+        $data['meta_desc'] = $this->company_meta_description;
+        $data['categories'] = MDTourCategory::all(array('conditions'=>"deleted = 0",'order'=>'name'));
+        $join = array('LEFT JOIN nanktour_tour_category c ON(nanktour_tour.id_tour_category = c.id)',
+                    'LEFT JOIN nanktour_tour_category t ON(t.id = c.id_category)');
+        $data['tours'] = MDTour::all(array(
+                            'select'=> 'nanktour_tour.*, c.name as name_category, c.alias as alias_category, t.name as name_parent, t.alias as alias_parent',
+                            'joins'=>$join,
+                            'conditions' => array('nanktour_tour.deleted = 0'),
+                            'order' => "nanktour_tour.name"
+                        ));
+        $this->viewData($data);
+        $this->displayView('tour');
+    }
+
+    public function tours($alias)
     {
         $alias2 = $this->uri->segment(3);
         $alias3 = $this->uri->segment(4);
+        $data['meta_desc'] = $this->company_meta_description;
+    
         if(isset($alias) && !isset($alias2) && !isset($alias3)){
             $category = MDTourCategory::find_by_alias_and_deleted($alias,0);
             $id_category = $category->id;
@@ -54,7 +86,7 @@ class Front extends XE_PublicController {
             $join = array('LEFT JOIN nanktour_tour_category c ON(nanktour_tour.id_tour_category = c.id)',
                     'LEFT JOIN nanktour_tour_category t ON(t.id = c.id_category)');
             $data['tours'] = MDTour::all(array(
-                                'select'=> 'nanktour_tour.*, c.name as name_category, c.alias as alias_category, t.name as name_parent',
+                                'select'=> 'nanktour_tour.*, c.name as name_category, c.alias as alias_category, t.name as name_parent, t.alias as alias_parent',
                                 'joins'=>$join,
                                 'conditions' => array('t.id = ? AND nanktour_tour.deleted = 0',$id_category),
                                 'order' => "nanktour_tour.name"
@@ -107,11 +139,13 @@ class Front extends XE_PublicController {
         //print_r($view_data);exit;
         $this->viewData($data);
         $this->displayView($view_data);
+        
     }
     
     public function about()
     {
         $data['title'] = $this->company_name . ' - About';
+        $data['meta_desc'] = $this->company_meta_description;
         $history = MDSettingValue::find_by_key_and_deleted('company_history',0);
         $data['history'] = json_decode($history->value, true);
         $this->viewData($data);
@@ -121,6 +155,7 @@ class Front extends XE_PublicController {
     public function faq()
     {
         $data['title'] = $this->company_name . ' - FAQ';
+        $data['meta_desc'] = $this->company_meta_description;
         $history = MDSettingValue::find_by_key_and_deleted('company_history',0);
         $data['faqs'] = MDFaq::all(array('conditions'=>'deleted = 0','order'=>'id'));
         $data['history'] = json_decode($history->value, true);
@@ -132,6 +167,7 @@ class Front extends XE_PublicController {
     public function blogs()
     {
         $data['title'] = $this->company_name . ' - Blog';
+        $data['meta_desc'] = $this->company_meta_description;
         $data['blogs'] = MDBlog::all(array('conditions'=>'deleted = 0','order'=>'date'));
         $data['blog_categories'] = MDBlogCategory::all(array('conditions'=>'deleted = 0','order'=>'name'));
         foreach($data['blogs'] as $key=> $blogs)
@@ -150,6 +186,7 @@ class Front extends XE_PublicController {
     public function blog($alias)
     {
         $data['title'] = $this->company_name . ' - Blog Detail';
+        $data['meta_desc'] = $this->company_meta_description;
         $data['message'] = '';
         $blog = MDBlog::find_by_alias_and_deleted($alias,0);
         $img = explode(',',$blog->img);
@@ -168,6 +205,7 @@ class Front extends XE_PublicController {
     public function contact()
     {
         $data['title'] = $this->company_name . ' - Contact';
+        $data['meta_desc'] = $this->company_meta_description;
         $message = '';
         $post = $this->input->post();
         if(!empty($post)) {
@@ -203,6 +241,7 @@ class Front extends XE_PublicController {
     public function gallery()
     {
         $data['title'] = $this->company_name . ' - Gallery';
+        $data['meta_desc'] = $this->company_meta_description;
         $data['galleries'] = MDGallery::all(array('conditions'=>'deleted = 0','order'=>'id'));
         $data['gallery_categories'] = MDGalleryCategory::all(array('conditions'=>'deleted = 0','order'=>'id'));
         $this->viewData($data);
@@ -213,6 +252,7 @@ class Front extends XE_PublicController {
     {
         $gallery = MDGallery::find_by_id_and_deleted($gallery_id,0);
         $data['title'] = $this->company_name . ' - Gallery';
+        $data['meta_desc'] = $this->company_meta_description;
         $data['galleries'] = $gallery;
         $this->viewData($data);
         $this->displayView('gallery_detail');
@@ -221,6 +261,7 @@ class Front extends XE_PublicController {
     public function service($categories_id)
     {
         $data['title'] = $this->company_name . ' - Services';
+        $data['meta_desc'] = $this->company_meta_description;
         $data['message'] = '';
         $categories = MDServiceCategory::find_by_id_and_deleted($categories_id,0);
         if(!$categories) {
@@ -259,6 +300,7 @@ class Front extends XE_PublicController {
     public function service_detail($service_id)
     {
         $data['title'] = $this->company_name . ' - Services Detail';
+        $data['meta_desc'] = $this->company_meta_description;
         $data['message'] = '';
         $service = MDService::find_by_id_and_deleted($service_id,0);
         if(!$service) {

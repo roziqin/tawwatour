@@ -1,6 +1,6 @@
 {% extends _layout %}
 {% block content %}
-<header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{ asset('img/',true)}}header-mini2.jpg"
+<header id="home" data-stellar-background-ratio="0.3" data-height="330" data-type="parallax" data-background="{{ asset('img/',true)}}header-mini2.jpg"
   data-background-mobile="{{ asset('img/',true)}}header-mini2.jpg" class="ct-mediaSection custom">
   <div class="ct-breadcrumbs">
     <ul class="list-inline list-unstyled text-uppercase">
@@ -36,7 +36,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-9 blogs">
         {% for blog in blogs %}
           <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" class="ct-article ct-fw-600 ct-article--inline">
             {% if blog.img is not empty %}
@@ -70,7 +70,7 @@
               </ul>
               <div itemprop="text" class="ct-article-description">
                 <p>{{description[loop.index -1]}}</p>
-                <a href="{{ base_url() }}blog/{{ blog.alias }}" itemprop="url" class="btn-primary btn-lg btn text-uppercase">read article</a>
+                <a href="{{ base_url() }}blog/{{ blog.alias }}" itemprop="url" class="btn-read-more">Baca Selengkanya ></a>
               </div>
             </div>
           </article>

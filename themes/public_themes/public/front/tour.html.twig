@@ -1,6 +1,6 @@
 {% extends _layout %}
 {% block content %}
-<header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{ asset('img/',true)}}header-mini3.jpg"
+<header id="home" data-stellar-background-ratio="0.3" data-height="330" data-type="parallax" data-background="{{ asset('img/',true)}}header-mini3.jpg"
   data-background-mobile="{{ asset('img/',true)}}header-mini3.jpg" class="ct-mediaSection custom">
   <div class="ct-breadcrumbs">
     <ul class="list-inline list-unstyled text-uppercase">
@@ -33,7 +33,7 @@
               <div class="ct-productBox-image">
                 <div class="ct-productBox-imageContainer">
                   <a href="basic-package-single.html">
-                    <img src="{{ asset('img/tours/',true)}}{{tour.thumbnail}}" alt="Product">
+                    <img src="{{ asset('img/tours/',true)}}{{tour.thumbnail}}" alt="Product" class="img-tour">
                   </a>
                 </div>
               </div>
@@ -55,7 +55,7 @@
                     </div>
                   </div>
                 </div>
-                <p class="ct-u-marginTop10">{{ tour.description_summary }}</p>
+                <!--<p class="ct-u-marginTop10">{{ tour.description_summary }}</p>-->
                 <a href="{{ base_url() }}tour/{{ tour.alias_parent }}/{{ tour.alias_category }}/{{ tour.alias }}" class="btn btn-primary btn-sm text-uppercase ct-u-marginTop20 col-md-12">
                   <i class="fa fa-search-plus"></i>
                   <span> Lihat Detil</span>
@@ -88,6 +88,7 @@
     
           </div>
         </div>
+        <!--
         <div class="widget widget-filter ct-js-gallery-filters" data-group="continent">
           <div class="widget-inner">
             <h6 class="ct-fw-600 ct-u-marginBottom20 text-capitalize">Paket Trip</h6>
@@ -104,10 +105,12 @@
             </ul>
           </div>
         </div>
+        -->
       </div>
     </div>
   </div>
 </section>
+<!--
 <section class="ct-u-backgroundMotive ct-u-colorWhite ct-u-paddingBoth20">
   <div class="container ct-u-relative ct-u-paddingTop20">
     <div class="row">
@@ -157,4 +160,5 @@
     <img src="./assets/images/content/guide-tour/subscribe-image.png" data-bottom="0" data-right="-210" alt="sub image" class="ct-js-imageOffset ct-u-z-index3">
   </div>
 </section>
+-->
 {% endblock %}

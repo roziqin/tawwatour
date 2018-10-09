@@ -1,12 +1,23 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">	
-<meta name="description" content="{{ meta_desc is defined ? metadesc : 'Untitled' }}">
+<meta name="description" content="{{ meta_desc is defined ? meta_desc : 'Menyediakan paket wisata area Malang dan Batu serta Bromo' }}">
 <meta name="author" content="{{ meta_author is defined ? meta_author : 'Untitled' }}">
 <meta name="format-detection" content="telephone=no">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>{{ title is defined ? title : 'Untitled' }}</title>
 
-<link rel="shortcut icon" href="{{ asset('img/', true) }}{{ getSettingValue('company_logo').value }}">
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Tawwa Trip Organizer - Paket Wisata Malang dan Tour di Malang" />
+<meta property="og:description" content="Paket Wisata Malang dan Tour Malang murah hemat. Melayani paket wisata malang batu bromo 2-3 hari" />
+<meta property="og:url" content="https://tawwatour.com/" />
+<meta property="og:site_name" content="Tawwa Trip Organizer - Paket Wisata Malang dan Tour di Malang" />
+<meta property="og:image" content="https://tawwatour.com/assets/img/logo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="Paket Wisata Malang dan Tour Malang murah hemat. Melayani paket wisata malang batu bromo 2-3 hari" />
+<meta name="twitter:title" content="Tawwa Trip Organizer - Paket Wisata Malang dan Tour di Malang" />
+
+<link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/motive/motive-tourist.css') }}">

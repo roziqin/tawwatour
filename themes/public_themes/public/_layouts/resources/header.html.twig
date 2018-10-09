@@ -9,6 +9,7 @@
 		<span class="icon-bar"></span>
 	</button>
 </div>
+<!--
 <div class="ct-topBar text-uppercase ct-fw-400">
 	<div class="container">
 		<ul class="list-inline pull-left ct-information-contact">
@@ -20,10 +21,10 @@
 				<i class="fa fa-phone"></i>Telepon:
 				<a href="tel:(012)345-6789"> {{ getSettingValue('company_phone').value }}</a>
 			</li>
-			<!--<li>
+			<li>
 				<i class="fa fa-phone"></i>Alamat:
 				<a href="tel:(012)345-6789"> {{ getSettingValue('company_address').value }}</a>
-			</li>-->
+			</li>
 		</ul>
 		<div class="pull-right">
 			<ul class="list-inline">
@@ -51,6 +52,7 @@
 		</div>
 	</div>
 </div>
+-->
 <nav class="navbar yamm text-uppercase">
 	<div class="container">
 		<div class="navbar-header">
@@ -59,12 +61,6 @@
 			</a>
 		</div>
 		<ul class="nav navbar-nav ct-navbar--fadeInUp pull-right">
-			<li class="dropdown">
-				<a href="{{ base_url() }}">Home</a>
-			</li>
-			<li class="dropdown yamm-fw">
-				<a href="{{ base_url() }}about">Tentang Kami</a>
-			</li>
 			<li class="dropdown">
 				<a href="{{ base_url() }}tour/family_trip">Family Trip</a>
 				<ul class="dropdown-menu">
@@ -99,6 +95,12 @@
 			<li class="dropdown yamm-fw">
 				<a href="{{ base_url() }}faq">Bantuan</a>
 			</li>
+			<li class="dropdown yamm-fw">
+				<a href="{{ base_url() }}about">Tentang Kami</a>
+			</li>
+	        <li class="dropdown yamm-fw">
+	            <a href="{{ base_url() }}contact">Hubungi Kami</a>
+	        </li>
 		</ul>
 	</div>
 </nav>

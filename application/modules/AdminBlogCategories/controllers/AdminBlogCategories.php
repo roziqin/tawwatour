@@ -56,8 +56,18 @@ class AdminBlogCategories extends XE_Controller {
             if ($this->form_validation->run() == FALSE) {
                 $message = err_msg(validation_errors());
             } else {
+                
+                $text = $post['blog_category_name'];
+                $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+                $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+                $text = preg_replace('~[^-\w]+~', '', $text);
+                $text = trim($text, '-');
+                $text = preg_replace('~-+~', '-', $text);
+                $text = strtolower($text);
+
                 $data_category = [
-                    'name' => $post['blog_category_name']
+                    'name' => $post['blog_category_name'],
+                    'alias' => $text
                 ];
                 $category_temp = MDBlogCategory::find_by_name_and_deleted($post['blog_category_name'],0);
                 if(!$category_temp||($category_temp && $category_temp->id == $category_id)) {

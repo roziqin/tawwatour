@@ -1,5 +1,5 @@
 {% extends _layout %} {% block content %}
-<header id="home" data-stellar-background-ratio="0.3" data-height="230" data-type="parallax" data-background="{{ asset('img/',true)}}header-mini3.jpg"
+<header id="home" data-stellar-background-ratio="0.3" data-height="330" data-type="parallax" data-background="{{ asset('img/',true)}}header-mini3.jpg"
   data-background-mobile="{{ asset('img/',true)}}header-mini3.jpg" class="ct-mediaSection custom">
   <div class="ct-breadcrumbs">
     <ul class="list-inline list-unstyled text-uppercase">
@@ -56,7 +56,7 @@
                     </div>
                   </div>
                 </div>
-                <p class="ct-u-marginTop10">{{ tour.description_summary }}</p>
+                <!--<p class="ct-u-marginTop10">{{ tour.description_summary }}</p>-->
                 <a href="{{ base_url() }}tour/{{ parent_alias }}/{{ child_alias }}/{{ tour.alias }}" class="btn btn-primary btn-sm text-uppercase ct-u-marginTop20 col-md-12"><i class="fa fa-search-plus"></i><span> Lihat Detil</span></a>
                 <a target="_blank" href="https://api.whatsapp.com/send?phone={{ getSettingValue('company_whatsapp').value }}" class="btn btn-success btn-sm text-uppercase ct-u-marginTop10 col-md-12"><i class="fa fa-whatsapp"></i><span> Pesan</span></a>
               </div>
