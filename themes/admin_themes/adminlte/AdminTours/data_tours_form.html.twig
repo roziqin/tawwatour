@@ -47,6 +47,14 @@
                             <label for="tours_name">Fasilitas</label>
                             <textarea type="text" class="form-control textarea" id="tours_facility" name="tours_facility" placeholder="Enter tours Facility">{{ tourss is defined ? tourss.facility : '' }}</textarea>
                         </div>
+                        <div class="form-group">
+                            <label for="tours_caption">Price </label>
+                            <input type="text" class="form-control alphanumeric" id="tours_price" name="tours_price" placeholder="Enter tour Price" value="{{ tourss is defined ? tourss.price : '' }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="tours_caption">Price Sale</label>
+                            <input type="text" class="form-control alphanumeric" id="tours_price_sale" name="tours_price_sale" placeholder="Enter tour Price Sale" value="{{ tourss is defined ? tourss.price_sale : '' }}">
+                        </div>
 
                         <div class="form-group">
                             <label for="tours_featured">Featured

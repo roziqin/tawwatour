@@ -25,47 +25,46 @@
         <div class="ct-results-right"></div>
       </div>
     </div>
-    <div class="col-md-9">
-      <div class="ct-js-gallery ct-gallery ct-gallery--product list-tour">
+    <div class="col-md-12">
+      <!--<div class="ct-js-gallery ct-gallery ct-gallery--product row list-tour">-->
+      <div class="row list-tour">
         {% for tour in tours %}
-        <div class="ct-gallery-item {{ tour.alias_category|replace({'_': " "}) }}">
-          <div class="ct-productBox ct-productBox--moreInfo ct-productBox--moreInfo-inline">
-            <h4 class="h4 ct-u-marginBottom10 dp-desktop">{{tour.name}}</h4>
-            <div class="ct-productBox-Description">
-              <div class="ct-productBox-image">
-                <div class="ct-productBox-imageContainer">
-                  <a href="{{ base_url() }}tour/{{ parent_alias }}/{{ child_alias }}/{{ tour.alias }}">
-                    <img src="{{ asset('img/tours/',true)}}{{tour.thumbnail}}" alt="Product">
-                  </a>
-                </div>
-              </div>
-              <h4 class="h4 ct-u-marginBottom10 dp-mobile">{{tour.name}}</h4>
-              <div class="ct-productBox-Meta text-center">
-                <div class="ct-productBox-deliveryInformation">
-                  <div class="ct-u-displayTableRow">
-                    <div class="ct-productBox-MetaItem">
-                      <span class="ct-u-colorMotive ct-fw-700">Paket</span>
-                      <span class="h5">{{ tour.name_category }}</span>
-                    </div>
+        <div class="col-xs-4 custom-box ct-gallery-item {{ tour.alias_category|replace({'_': ""}) }}">
+            <div class="ct-productBox ct-u-marginBottom40 box-paket" style="background-image: url('{{ asset('img/tours/',true)}}{{tour.thumbnail}}');">
+              <div class="overlay"></div>
+              <a href="{{ base_url() }}tour/{{ parent_alias }}/{{ child_alias }}/{{ tour.alias }}">
+                
+                <div class="ct-productBox-Description ct-u-colorWhite">
+                  <div id="price" class="tour-price">Rp. <span>{{ tour.price }}</span></div>
+                  <div class="ct-productBox-DescriptionInner">
+                      <h5 class="text-uppercase  ct-fw-700">{{ tour.name }}</h5>
                   </div>
-                </div><div class="ct-productBox-deliveryInformation">
-                  <div class="ct-u-displayTableRow">
-                    <div class="ct-productBox-MetaItem">
-                      <span class="ct-u-colorMotive ct-fw-700">Harga</span>
-                      <span class="h5">Hubungi Kami</span>
+                  <div class="ct-productBox-Meta">
+                   
+                    <div class="ct-productBox-deliveryInformation">
+                      <div class="ct-productBox-MetaItem">
+                        <span class="">{{ tour.name_parent }}</span>
+                      </div>
+                      <div class="ct-productBox-MetaItem">
+                        <span class="">
+                          <img src="{{ asset('images/time-white-1.svg') }}" class="icon-time">
+                          {{ tour.name_category }}
+                        </span>
+                      </div>
                     </div>
+                   
+                 
+                    <div class="clearfix"></div>
                   </div>
                 </div>
-                <!--<p class="ct-u-marginTop10">{{ tour.description_summary }}</p>-->
-                <a href="{{ base_url() }}tour/{{ parent_alias }}/{{ child_alias }}/{{ tour.alias }}" class="btn btn-primary btn-sm text-uppercase ct-u-marginTop20 col-md-12"><i class="fa fa-search-plus"></i><span> Lihat Detil</span></a>
-                <a target="_blank" href="https://api.whatsapp.com/send?phone={{ getSettingValue('company_whatsapp').value }}" class="btn btn-success btn-sm text-uppercase ct-u-marginTop10 col-md-12"><i class="fa fa-whatsapp"></i><span> Pesan</span></a>
-              </div>
+              </a>
             </div>
           </div>
-        </div>
+          
         {% endfor %}
       </div>
     </div>
+    <!--
     <div class="col-md-3">
       <div class="ct-sidebar ct-sidebar--search">
         <div class="widget widget-filter ct-js-gallery-filters" data-group="continent">
@@ -74,17 +73,21 @@
             <img src="{{ asset('img/',true)}}call-center.jpg" alt="Product">
             <a target="_blank" href="https://api.whatsapp.com/send?phone={{ getSettingValue('company_whatsapp').value }}" class="btn btn-success btn-sm text-uppercase ct-u-marginTop20">
               <i class="fa fa-whatsapp"></i>
-              <span>Via Whatsapp</span></a>
+              <span>Via Whatsapp</span>
+            </a>
             <a href="tel:{{ getSettingValue('company_phone').value }}" class="btn btn-primary btn-sm text-uppercase ct-u-marginTop20">
               <i class="fa fa-phone"></i>
-              <span>Via Telepon</span></a>
+              <span>Via Telepon</span>
+            </a>
     
           </div>
-        </div>
+        </div>        
       </div>
     </div>
+    -->
   </div>
 </section>
+<!--
 <section class="ct-u-backgroundMotive ct-u-colorWhite ct-u-paddingBoth20">
   <div class="container ct-u-relative ct-u-paddingTop20">
     <div class="row">
@@ -134,5 +137,5 @@
     <img src="./assets/images/content/guide-tour/subscribe-image.png" data-bottom="0" data-right="-210" alt="sub image" class="ct-js-imageOffset ct-u-z-index3">
   </div>
 </section>
-
+-->
 {% endblock %}

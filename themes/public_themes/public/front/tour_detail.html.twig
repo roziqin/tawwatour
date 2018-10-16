@@ -1,7 +1,30 @@
 {% extends _layout %}
 {% block content %}
+<!--
 <header id="home" data-stellar-background-ratio="0.3" data-height="330" data-type="parallax" data-background="{{ asset('img/',true)}}header-mini3.jpg"
   data-background-mobile="{{ asset('img/',true)}}header-mini3.jpg" class="ct-mediaSection custom">
+  
+</header>
+-->
+<section class="header-slide">
+<div class="row">
+  <div class="col-md-12">
+    <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="6000"
+      data-draggable="true" data-touchMove="false" data-arrows="true" data-items="1" class="ct-slick ct-js-slick ct-slick--arrows">
+      {% set img_slide_temp = explode(',',tour.img) %} 
+      {% if tour.img is not empty %} 
+        {% for img_slide in img_slide_temp %}
+        <div class="item">
+          <img src="{{ asset('img/tours/',true)}}{{img_slide}}" alt="">
+        </div>
+        {% endfor %} 
+      {% else %}
+        <div class="item"></div>
+          <img src="{{ asset('img/tours/default.png',true) }}"> 
+        </div>
+      {% endif %}
+    </div>
+  </div>
   <div class="ct-breadcrumbs">
     <ul class="list-inline list-unstyled text-uppercase">
       <li>
@@ -19,30 +42,14 @@
         </a>
     </ul>
   </div>
-</header>
+</div>
+
+</section>
 <section class="ct-u-paddingTop50 ct-u-paddingBottom70">
   <div class="container tour-detail">
+
     <div class="row">
       <div class="col-sm-9">
-        <div class="row">
-          <div class="col-md-12">
-            <div data-adaptiveHeight="true" data-animations="true" data-autoplay="true" data-infinite="true" data-autoplaySpeed="6000"
-              data-draggable="true" data-touchMove="false" data-arrows="true" data-items="1" class="ct-slick ct-js-slick ct-slick--arrows ct-u-marginBottom20">
-              {% set img_slide_temp = explode(',',tour.img) %} 
-              {% if tour.img is not empty %} 
-                {% for img_slide in img_slide_temp %}
-                <div class="item">
-                  <img src="{{ asset('img/tours/',true)}}{{img_slide}}" alt="">
-                </div>
-                {% endfor %} 
-              {% else %}
-                <div class="item"></div>
-                  <img src="{{ asset('img/tours/default.png',true) }}"> 
-                </div>
-              {% endif %}
-            </div>
-          </div>
-        </div>
         <div class="row ct-u-colorBlackLight">
           <div class="col-md-12">
             <h4>{{tour.name}}
@@ -106,6 +113,32 @@
         </div>
       </div>
       <div class="col-sm-3">
+        <div class="calc-tour-price">
+          <div class="header">
+            <span class="tour-price">Rp <span>{{ tour.price }}</span></span>
+            <span class="person">Per Orang</span>
+          </div>
+          <div class="content">
+            <table>
+              <tr>
+                <td>Dewasa</td>
+                <td><input type="number" name="dewasa" id="dewasa" value="0" min="0" ></td>
+                <td> x </td>
+                <td class="tour-price">Rp. <span>{{ tour.price }}</span></td>
+              </tr>
+              <tr>
+                <td>Anak</td>
+                <td><input type="number" name="anak" id="anak" value="0" min="0" ></td>
+                <td> x </td>
+                <td class="tour-price">Rp. <span>{{ tour.price }}</span></td>
+              </tr>
+              <tr>
+                <td colspan="3"><b>Total</b></td>
+                <td class="tour-price">Rp. <span></span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
         <div class="ct-sidebar ct-sidebar--search">
           <div class="widget widget-filter ct-js-gallery-filters" style="padding-top:0px !important;" data-group="continent">
             <div class="widget-inner">

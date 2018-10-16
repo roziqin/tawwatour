@@ -7,7 +7,7 @@ class Front extends XE_PublicController {
         parent::__construct();
         $company_name = getSettingValue('company_name');
         $this->company_name = $company_name ? $company_name->value : $this->config->item('default_title');
-        $data['categories'] = MDTourCategory::all(array('conditions'=>"deleted = 0 AND status = 'child'",'order'=>'id'));
+        $data['menucategories'] = MDTourCategory::all(array('conditions'=>"deleted = 0 AND status = 'child'",'order'=>'id'));
         $company_meta_description = getSettingValue('company_meta_description');
         $data['blogs'] = MDBlog::all(array('conditions'=>'deleted = 0','order'=>'caption','limit'=>'4'));
         foreach($data['blogs'] as $key=> $blogs)

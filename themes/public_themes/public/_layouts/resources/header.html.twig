@@ -66,7 +66,7 @@
 				<ul class="dropdown-menu">
 					<li>
 						<div class="yamm-content">
-							{% for category in categories %}
+							{% for category in menucategories %}
 								{% if category.id_category == 1 %}
 									<a href="{{ base_url() }}tour/family_trip/{{ category.alias }}">{{category.name}}</a>
 								{% endif %}
@@ -80,7 +80,7 @@
 				<ul class="dropdown-menu">
 					<li>
 						<div class="yamm-content">
-							{% for category in categories %} 
+							{% for category in menucategories %} 
 								{% if category.id_category == 2 %}
 									<a href="{{ base_url() }}tour/corporate_trip/{{ category.alias }}">{{category.name}}</a>
 								{% endif %} 

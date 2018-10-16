@@ -42,49 +42,43 @@
       </div>
       {% endif %}
     </header>
-    <section id="packages" class="ct-u-decoration--triangleBefore ct-u-backgroundMotive">
+    <section id="packages" class="ct-u-decoration--triangleBefore">
       <div class="container">
-        <div class="ct-heading--withBorder ct-u-marginBottom70">
-          <h4 class="ct-u-colorWhite text-uppercase ct-u-marginBottom10">PAKET TERPOPULER</h4>
-          <p class="ct-u-colorBlueLight">Kami menyediakan berbagai pilihan paket wisata yang dapat anda pilih sesuai kebutuhan.</p>
+        <div class="ct-u-marginBoth70">
+          <h3 class="text-uppercase ct-u-marginBottom10 text-center">PAKET TERPOPULER</h3>
+          <p class="text-center">Kami menyediakan berbagai pilihan paket wisata yang dapat anda pilih sesuai kebutuhan.</p>
         </div>
         <div class="row">
           {% for tour in tours %}
-          <div class="col-xs-6 custom-box">
-            <div class="ct-productBox ct-u-marginBottom40 box-paket">
-              <div class="ct-productBox-image">
-                <div class="ct-productBox-imageContainer">
-                  <a href="{{ base_url() }}tour/{{ tour.alias_parent }}/{{ tour.alias_category }}/{{ tour.alias }}">
-                    <img src="{{ asset('img/tours/',true)}}{{tour.thumbnail}}" alt="Product" width="255" height="255">
-                  </a>
-                </div>
-              </div>
-              <div class="ct-productBox-Description text-center">
-                <div class="ct-productBox-DescriptionInner text-center">
-                  <a href="{{ base_url() }}tour/{{ tour.alias_parent }}/{{ tour.alias_category }}/{{ tour.alias }}">
-                    <h5 class="text-uppercase  ct-fw-700">{{ tour.name }}</h5>
-                  </a>
-                </div>
-                <div class="ct-productBox-Meta text-center">
-                  <!--
-                  <div class="ct-productBox-deliveryInformation text-center">
-                    <div class="ct-u-displayTableRow">
-                      <div class="ct-productBox-MetaItem">
-                        <span class="h5 text-uppercase">{{ tour.name_parent }}</span>
-                      </div>
-                    </div>
-                    <div class="ct-u-displayTableRow">
-                      <div class="ct-productBox-MetaItem">
-                        <span class="h5 text-uppercase">{{ tour.name_category }}</span>
-                      </div>
-                    </div>
+          <div class="col-xs-4 custom-box">
+            <div class="ct-productBox ct-u-marginBottom40 box-paket" style="background-image: url('{{ asset('img/tours/',true)}}{{tour.thumbnail}}');">
+              <div class="overlay"></div>
+              <a href="{{ base_url() }}tour/{{ tour.alias_parent }}/{{ tour.alias_category }}/{{ tour.alias }}">
+                
+                <div class="ct-productBox-Description ct-u-colorWhite">
+                  <div id="price" class="tour-price">Rp. <span>{{ tour.price }}</span></div>
+                  <div class="ct-productBox-DescriptionInner">
+                      <h5 class="text-uppercase  ct-fw-700">{{ tour.name }}</h5>
                   </div>
-                  -->
-                  <a href="{{ base_url() }}tour/{{ tour.alias_parent }}/{{ tour.alias_category }}/{{ tour.alias }}" class="btn btn-primary btn-xs text-uppercase ct-u-marginBoth10 col-md-12 btn-paket">LIHAT DETAIL</a>
-                  <a target="_blank" href="https://api.whatsapp.com/send?phone={{ getSettingValue('company_whatsapp').value }}" class="btn btn-primary btn-xs text-uppercase ct-u-marginBoth10 col-md-12 btn-paket">BOOKING</a>
-                  <div class="clearfix"></div>
+                  <div class="ct-productBox-Meta">
+                   
+                    <div class="ct-productBox-deliveryInformation">
+                      <div class="ct-productBox-MetaItem">
+                        <span class="">{{ tour.name_parent }}</span>
+                      </div>
+                      <div class="ct-productBox-MetaItem">
+                        <span class="">
+                          <img src="{{ asset('images/time-white-1.svg') }}" class="icon-time">
+                          {{ tour.name_category }}
+                        </span>
+                      </div>
+                    </div>
+                   
+                 
+                    <div class="clearfix"></div>
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
           {% endfor %}

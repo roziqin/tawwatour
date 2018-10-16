@@ -106,7 +106,9 @@ class AdminTours extends XE_Controller {
                     'itinerary' => $post['tours_itinerary'],
                     'facility' => $post['tours_facility'],
                     'description_summary' => $post['tours_description_summary'],
-                    'id_tour_category' => $post['tours_category']
+                    'id_tour_category' => $post['tours_category'],
+                    'price' => $post['tours_price'],
+                    'price_sale' => $post['tours_price_sale']
                     // 'id_afiliasi' => $data_afiliasi 
                 ];
                 $tours_temp = MDTour::find_by_name_and_deleted($post['tours_name'],0);
@@ -153,7 +155,9 @@ class AdminTours extends XE_Controller {
                             'facility' => $post['tours_facility'],
                             'description_summary' => $post['tours_description_summary'],
                             'id_tour_category' => $post['tours_category'],
-                            'featured' => $featured
+                            'featured' => $featured,
+                            'price' => $post['tours_price'],
+                            'price_sale' => $post['tours_price_sale']
                         ];
 
 
@@ -248,7 +252,9 @@ class AdminTours extends XE_Controller {
                     'facility' => $post['tours_facility'],
                     'description_summary' => $post['tours_description_summary'],
                     'id_tour_category' => $post['tours_category'],
-                    'featured' => $featured
+                    'featured' => $featured,
+                    'price' => $post['tours_price'],
+                    'price_sale' => $post['tours_price_sale']
                 ];
 
                 $res = MDTour::create($data_tours);            
